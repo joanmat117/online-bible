@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/providers";
-import NavigationBar from "@/components/navigationBar";
 
 const geistMontserrat = Montserrat({
   variable: "--font-outfit",
@@ -27,7 +26,6 @@ export default function RootLayout({
       >
         <Providers>
           {children}
-          <NavigationBar/>
         </Providers>
       </body>
     </html>

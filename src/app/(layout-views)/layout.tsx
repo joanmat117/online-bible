@@ -1,9 +1,12 @@
+import NavigationBar from "@/components/navigationBar";
 import { Box } from "@mui/material";
+import { ReactNode } from "react";
 
 export default function Roout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode
+    ;
 }>) {
   return <>
   <Box sx={{
@@ -14,5 +17,6 @@ export default function Roout({
   >
     {children}
   </Box>
+  <NavigationBar/>
   </>
 }

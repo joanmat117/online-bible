@@ -1,10 +1,14 @@
-export default function Read(){
+import { Typography } from "@mui/material"
+
+interface Params {
+searchParams?: Record<any,any>
+}
+
+
+export default async function Read(){
 	return <>
-	<p>Papa , tu te puedes creer que este texto lo estoy escribiendo en:</p>
-  <h2>NEOVIM</h2>
-  <ul>
-    <li>En serio esto lo estoy escribiendo desde nvim?</li>
-     <li>En serio esto lo estoy escribiendo desde nvim?</li> 
-  </ul>
+    <Typography variant="h2">
+      Capitulo 3
+    </Typography>
 	</>
 }

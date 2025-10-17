@@ -1,0 +1,332 @@
+[
+    {
+        "title": "Génesis",
+        "id": "GEN",
+        "numberOfChapters": 50
+    },
+    {
+        "title": "Éxodo",
+        "id": "EXO",
+        "numberOfChapters": 40
+    },
+    {
+        "title": "Levítico",
+        "id": "LEV",
+        "numberOfChapters": 27
+    },
+    {
+        "title": "Números",
+        "id": "NUM",
+        "numberOfChapters": 36
+    },
+    {
+        "title": "Deuteronomio",
+        "id": "DEU",
+        "numberOfChapters": 34
+    },
+    {
+        "title": "Josué",
+        "id": "JOS",
+        "numberOfChapters": 24
+    },
+    {
+        "title": "Jueces",
+        "id": "JDG",
+        "numberOfChapters": 21
+    },
+    {
+        "title": "Rut",
+        "id": "RUT",
+        "numberOfChapters": 4
+    },
+    {
+        "title": "1 Samuel",
+        "id": "1SA",
+        "numberOfChapters": 31
+    },
+    {
+        "title": "2 Samuel",
+        "id": "2SA",
+        "numberOfChapters": 24
+    },
+    {
+        "title": "1 Reyes",
+        "id": "1KI",
+        "numberOfChapters": 22
+    },
+    {
+        "title": "2 Reyes",
+        "id": "2KI",
+        "numberOfChapters": 25
+    },
+    {
+        "title": "Crónicas",
+        "id": "1CH",
+        "numberOfChapters": 29
+    },
+    {
+        "title": "2 Crónicas",
+        "id": "2CH",
+        "numberOfChapters": 36
+    },
+    {
+        "title": "Esdras",
+        "id": "EZR",
+        "numberOfChapters": 10
+    },
+    {
+        "title": "Nehemías",
+        "id": "NEH",
+        "numberOfChapters": 13
+    },
+    {
+        "title": "Ester",
+        "id": "EST",
+        "numberOfChapters": 10
+    },
+    {
+        "title": "Job",
+        "id": "JOB",
+        "numberOfChapters": 42
+    },
+    {
+        "title": "Salmos",
+        "id": "PSA",
+        "numberOfChapters": 150
+    },
+    {
+        "title": "Proverbios",
+        "id": "PRO",
+        "numberOfChapters": 31
+    },
+    {
+        "title": "Eclesiastés",
+        "id": "ECC",
+        "numberOfChapters": 12
+    },
+    {
+        "title": "Cantar de los Cantares",
+        "id": "SNG",
+        "numberOfChapters": 8
+    },
+    {
+        "title": "Isaías",
+        "id": "ISA",
+        "numberOfChapters": 66
+    },
+    {
+        "title": "Jeremías",
+        "id": "JER",
+        "numberOfChapters": 52
+    },
+    {
+        "title": "Lamentaciones",
+        "id": "LAM",
+        "numberOfChapters": 5
+    },
+    {
+        "title": "Ezequiel",
+        "id": "EZK",
+        "numberOfChapters": 48
+    },
+    {
+        "title": "Daniel",
+        "id": "DAN",
+        "numberOfChapters": 12
+    },
+    {
+        "title": "Oseas",
+        "id": "HOS",
+        "numberOfChapters": 14
+    },
+    {
+        "title": "Joel",
+        "id": "JOL",
+        "numberOfChapters": 3
+    },
+    {
+        "title": "Amós",
+        "id": "AMO",
+        "numberOfChapters": 9
+    },
+    {
+        "title": "Abdías",
+        "id": "OBA",
+        "numberOfChapters": 1
+    },
+    {
+        "title": "Jonás",
+        "id": "JON",
+        "numberOfChapters": 4
+    },
+    {
+        "title": "Miqueas",
+        "id": "MIC",
+        "numberOfChapters": 7
+    },
+    {
+        "title": "Nahum",
+        "id": "NAM",
+        "numberOfChapters": 3
+    },
+    {
+        "title": "Habacuc",
+        "id": "HAB",
+        "numberOfChapters": 3
+    },
+    {
+        "title": "Sofonías",
+        "id": "ZEP",
+        "numberOfChapters": 3
+    },
+    {
+        "title": "Hageo",
+        "id": "HAG",
+        "numberOfChapters": 2
+    },
+    {
+        "title": "Zacarías",
+        "id": "ZEC",
+        "numberOfChapters": 14
+    },
+    {
+        "title": "Malaquías",
+        "id": "MAL",
+        "numberOfChapters": 4
+    },
+    {
+        "title": "San Mateo",
+        "id": "MAT",
+        "numberOfChapters": 28
+    },
+    {
+        "title": "Marcos",
+        "id": "MRK",
+        "numberOfChapters": 16
+    },
+    {
+        "title": "San Lucas",
+        "id": "LUK",
+        "numberOfChapters": 24
+    },
+    {
+        "title": "Juan",
+        "id": "JHN",
+        "numberOfChapters": 21
+    },
+    {
+        "title": "Hechos",
+        "id": "ACT",
+        "numberOfChapters": 28
+    },
+    {
+        "title": "Romanos",
+        "id": "ROM",
+        "numberOfChapters": 16
+    },
+    {
+        "title": "1 Corintios",
+        "id": "1CO",
+        "numberOfChapters": 16
+    },
+    {
+        "title": "2 Corintios",
+        "id": "2CO",
+        "numberOfChapters": 13
+    },
+    {
+        "title": "Gálatas",
+        "id": "GAL",
+        "numberOfChapters": 6
+    },
+    {
+        "title": "Efesios",
+        "id": "EPH",
+        "numberOfChapters": 6
+    },
+    {
+        "title": "Filipenses",
+        "id": "PHP",
+        "numberOfChapters": 4
+    },
+    {
+        "title": "Colosenses",
+        "id": "COL",
+        "numberOfChapters": 4
+    },
+    {
+        "title": "1 Tesalonicenses",
+        "id": "1TH",
+        "numberOfChapters": 5
+    },
+    {
+        "title": "2 Tesalonicenses",
+        "id": "2TH",
+        "numberOfChapters": 3
+    },
+    {
+        "title": "1 Timoteo",
+        "id": "1TI",
+        "numberOfChapters": 6
+    },
+    {
+        "title": "2 Timoteo",
+        "id": "2TI",
+        "numberOfChapters": 4
+    },
+    {
+        "title": "Tito",
+        "id": "TIT",
+        "numberOfChapters": 3
+    },
+    {
+        "title": "Filemón",
+        "id": "PHM",
+        "numberOfChapters": 1
+    },
+    {
+        "title": "Hebreos",
+        "id": "HEB",
+        "numberOfChapters": 13
+    },
+    {
+        "title": "Santiago",
+        "id": "JAS",
+        "numberOfChapters": 5
+    },
+    {
+        "title": "1 Pedro",
+        "id": "1PE",
+        "numberOfChapters": 5
+    },
+    {
+        "title": "2 Pedro",
+        "id": "2PE",
+        "numberOfChapters": 3
+    },
+    {
+        "title": "1 Juan",
+        "id": "1JN",
+        "numberOfChapters": 5
+    },
+    {
+        "title": "2 Juan",
+        "id": "2JN",
+        "numberOfChapters": 1
+    },
+    {
+        "title": "3 Juan",
+        "id": "3JN",
+        "numberOfChapters": 1
+    },
+    {
+        "title": "Judas",
+        "id": "JUD",
+        "numberOfChapters": 1
+    },
+    {
+        "title": "Apocalipsis",
+        "id": "REV",
+        "numberOfChapters": 22
+    }
+]
