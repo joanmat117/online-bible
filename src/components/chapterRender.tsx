@@ -26,7 +26,7 @@ export const ChapterRender = () => {
   },[currentChapter])
 
   return (
-    <section>
+    <Box sx={{p:1}} component={'section'}>
     {
       isLoading && <>
       <Typography variant='h3'>
@@ -42,7 +42,7 @@ export const ChapterRender = () => {
     {
       data && verses && !error && !isLoading && <> 
       
-      <Button fullWidth sx={{p:2,m:1,fontSize:20,borderRadius:'12px',textTransform:'capitalize'}} onClick={changeToPrevChapter} variant='contained'>
+      <Button fullWidth sx={{p:2,fontSize:20,borderRadius:'12px',textTransform:'capitalize'}} onClick={changeToPrevChapter} variant='contained'>
         Capitulo anterior
       </Button>
       <Typography py={3} textAlign={'center'} variant='h2'>
@@ -59,13 +59,13 @@ export const ChapterRender = () => {
         ))}
       </Stack>
 
-      <Button fullWidth sx={{p:2,m:1,fontSize:20,borderRadius:'12px',textTransform:'capitalize'}} onClick={changeToNextChapter} variant='contained'>
+      <Button fullWidth sx={{p:2,fontSize:20,borderRadius:'12px',textTransform:'capitalize'}} onClick={changeToNextChapter} variant='contained'>
        Capitulo siguiente
       </Button>
       </>
     }
     
-    </section>
+    </Box>
   );
 };
 

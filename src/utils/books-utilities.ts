@@ -12,7 +12,7 @@ export function getPrevChapter({bookId,chapter}:{bookId:string,chapter:number}){
      const prevBook = books[actualBookIndex-1]
      return {
        bookId:prevBook.id,
-       chapter:1
+       chapter:prevBook.numberOfChapters
      }
    } else {
      return {
