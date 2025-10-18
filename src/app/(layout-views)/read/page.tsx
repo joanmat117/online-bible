@@ -1,14 +1,8 @@
-import { Typography } from "@mui/material"
+import { ChapterRender } from "@/components/chapterRender"
 
-interface Params {
-searchParams?: Record<any,any>
-}
-
-
-export default async function Read(){
-	return <>
-    <Typography variant="h2">
-      Capitulo 3
-    </Typography>
+export default function Read(){
+ 
+  return <>
+  <ChapterRender/>
 	</>
 }

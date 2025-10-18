@@ -1,0 +1,172 @@
+{
+    "translation": {
+        "id": "spa_r09",
+        "name": "Santa Biblia — Reina Valera 1909",
+        "website": "https://ebible.org/Scriptures/details.php?id=spaRV1909",
+        "licenseUrl": "https://ebible.org/Scriptures/details.php?id=spaRV1909",
+        "licenseNotes": null,
+        "shortName": "R09",
+        "englishName": "Reina Valera 1909",
+        "language": "spa",
+        "textDirection": "ltr",
+        "sha256": "94e154b2e6e56eda1702d9e9f664357a5f2aa82634b551111b0b698d124e97d5",
+        "availableFormats": ["json"],
+        "listOfBooksApiLink": "/api/spa_r09/books.json",
+        "numberOfBooks": 66,
+        "totalNumberOfChapters": 1189,
+        "totalNumberOfVerses": 31102,
+        "languageName": "español",
+        "languageEnglishName": "Spanish"
+    },
+    "book": {
+        "id": "GEN",
+        "translationId": "spa_r09",
+        "name": "Génesis",
+        "commonName": "Génesis",
+        "title": "Génesis",
+        "order": 1,
+        "numberOfChapters": 50,
+        "sha256": "50aad366050b7562f76e865ca1ea68290e1538ee57267abcf92eb92a6d6b5fb6",
+        "firstChapterNumber": 1,
+        "firstChapterApiLink": "/api/spa_r09/GEN/1.json",
+        "lastChapterNumber": 50,
+        "lastChapterApiLink": "/api/spa_r09/GEN/50.json",
+        "totalNumberOfVerses": 1533
+    },
+    "chapter": {
+        "number": 1,
+        "content": [{
+            "type": "verse",
+            "number": 1,
+            "content": ["EN el principio crió Dios los cielos y la tierra."]
+        }, {
+            "type": "verse",
+            "number": 2,
+            "content": ["Y la tierra estaba desordenada y vacía, y las tinieblas estaban sobre la haz del abismo, y el Espíritu de Dios se movía sobre la haz de las aguas."]
+        }, {
+            "type": "verse",
+            "number": 3,
+            "content": ["Y dijo Dios: Sea la luz: y fué la luz."]
+        }, {
+            "type": "verse",
+            "number": 4,
+            "content": ["Y vió Dios que la luz era buena: y apartó Dios la luz de las tinieblas."]
+        }, {
+            "type": "verse",
+            "number": 5,
+            "content": ["Y llamó Dios á la luz Día, y á las tinieblas llamó Noche: y fué la tarde y la mañana un día."]
+        }, {
+            "type": "verse",
+            "number": 6,
+            "content": ["Y dijo Dios: Haya expansión en medio de las aguas, y separe las aguas de las aguas."]
+        }, {
+            "type": "verse",
+            "number": 7,
+            "content": ["E hizo Dios la expansión, y apartó las aguas que estaban debajo de la expansión, de las aguas que estaban sobre la expansión: y fué así."]
+        }, {
+            "type": "verse",
+            "number": 8,
+            "content": ["Y llamó Dios á la expansión Cielos: y fué la tarde y la mañana el día segundo."]
+        }, {
+            "type": "verse",
+            "number": 9,
+            "content": ["Y dijo Dios: Júntense las aguas que están debajo de los cielos en un lugar, y descúbrase la seca: y fué así."]
+        }, {
+            "type": "verse",
+            "number": 10,
+            "content": ["Y llamó Dios á la seca Tierra, y á la reunión de las aguas llamó Mares: y vió Dios que era bueno."]
+        }, {
+            "type": "verse",
+            "number": 11,
+            "content": ["Y dijo Dios: Produzca la tierra hierba verde, hierba que dé simiente; árbol de fruto que dé fruto según su género, que su simiente esté en él, sobre la tierra: y fué así."]
+        }, {
+            "type": "verse",
+            "number": 12,
+            "content": ["Y produjo la tierra hierba verde, hierba que da simiente según su naturaleza, y árbol que da fruto, cuya simiente está en él, según su género: y vió Dios que era bueno."]
+        }, {
+            "type": "verse",
+            "number": 13,
+            "content": ["Y fué la tarde y la mañana el día tercero."]
+        }, {
+            "type": "verse",
+            "number": 14,
+            "content": ["Y dijo Dios: Sean lumbreras en la expansión de los cielos para apartar el día y la noche: y sean por señales, y para las estaciones, y para días y años;"]
+        }, {
+            "type": "verse",
+            "number": 15,
+            "content": ["Y sean por lumbreras en la expansión de los cielos para alumbrar sobre la tierra: y fué así."]
+        }, {
+            "type": "verse",
+            "number": 16,
+            "content": ["E hizo Dios las dos grandes lumbreras; la lumbrera mayor para que señorease en el día, y la lumbrera menor para que señorease en la noche: hizo también las estrellas."]
+        }, {
+            "type": "verse",
+            "number": 17,
+            "content": ["Y púsolas Dios en la expansión de los cielos, para alumbrar sobre la tierra,"]
+        }, {
+            "type": "verse",
+            "number": 18,
+            "content": ["Y para señorear en el día y en la noche, y para apartar la luz y las tinieblas: y vió Dios que era bueno."]
+        }, {
+            "type": "verse",
+            "number": 19,
+            "content": ["Y fué la tarde y la mañana el día cuarto."]
+        }, {
+            "type": "verse",
+            "number": 20,
+            "content": ["Y dijo Dios: Produzcan las aguas reptil de ánima viviente, y aves que vuelen sobre la tierra, en la abierta expansión de los cielos."]
+        }, {
+            "type": "verse",
+            "number": 21,
+            "content": ["Y crió Dios las grandes ballenas, y toda cosa viva que anda arrastrando, que las aguas produjeron según su género, y toda ave alada según su especie: y vió Dios que era bueno."]
+        }, {
+            "type": "verse",
+            "number": 22,
+            "content": ["Y Dios los bendijo diciendo: Fructificad y multiplicad, y henchid las aguas en los mares, y las aves se multipliquen en la tierra."]
+        }, {
+            "type": "verse",
+            "number": 23,
+            "content": ["Y fué la tarde y la mañana el día quinto."]
+        }, {
+            "type": "verse",
+            "number": 24,
+            "content": ["Y dijo Dios: Produzca la tierra seres vivientes según su género, bestias y serpientes y animales de la tierra según su especie: y fué así."]
+        }, {
+            "type": "verse",
+            "number": 25,
+            "content": ["E hizo Dios animales de la tierra según su género, y ganado según su género, y todo animal que anda arrastrando sobre la tierra según su especie: y vió Dios que era bueno."]
+        }, {
+            "type": "verse",
+            "number": 26,
+            "content": ["Y dijo Dios: Hagamos al hombre á nuestra imagen, conforme á nuestra semejanza; y señoree en los peces de la mar, y en las aves de los cielos, y en las bestias, y en toda la tierra, y en todo animal que anda arrastrando sobre la tierra."]
+        }, {
+            "type": "verse",
+            "number": 27,
+            "content": ["Y crió Dios al hombre á su imagen, á imagen de Dios lo crió; varón y hembra los crió."]
+        }, {
+            "type": "verse",
+            "number": 28,
+            "content": ["Y los bendijo Dios; y díjoles Dios: Fructificad y multiplicad, y henchid la tierra, y sojuzgadla, y señoread en los peces de la mar, y en las aves de los cielos, y en todas las bestias que se mueven sobre la tierra."]
+        }, {
+            "type": "verse",
+            "number": 29,
+            "content": ["Y dijo Dios: He aquí que os he dado toda hierba que da simiente, que está sobre la haz de toda la tierra; y todo árbol en que hay fruto de árbol que da simiente, seros ha para comer."]
+        }, {
+            "type": "verse",
+            "number": 30,
+            "content": ["Y á toda bestia de la tierra, y á todas las aves de los cielos, y á todo lo que se mueve sobre la tierra, en que hay vida, toda hierba verde les será para comer: y fué así."]
+        }, {
+            "type": "verse",
+            "number": 31,
+            "content": ["Y vió Dios todo lo que había hecho, y he aquí que era bueno en gran manera. Y fué la tarde y la mañana el día sexto."]
+        }],
+        "footnotes": []
+    },
+    "thisChapterLink": "/api/spa_r09/GEN/1.json",
+    "thisChapterAudioLinks": {},
+    "nextChapterApiLink": "/api/spa_r09/GEN/2.json",
+    "nextChapterAudioLinks": {},
+    "previousChapterApiLink": null,
+    "previousChapterAudioLinks": null,
+    "numberOfVerses": 31
+}
