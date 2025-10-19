@@ -1,6 +1,6 @@
 import { useBibleStore } from "@/zustand/useBibleStore";
 import {useEffect} from 'react'
-import { getBookByQuery } from "./books-utilities";
+import { getBookByQuery } from "@/utils/books-utilities";
 import { useSearchParams } from "next/navigation"
 
 export function useFetchChapterByParams(){

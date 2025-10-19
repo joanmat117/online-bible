@@ -1,32 +1,22 @@
 "use client"
 import { Box} from '@mui/material'
-import { useRef,useEffect, useState } from "react"
 import NavigationBar from '@/components/navigationBar'
 import { ChapterNavigationBar } from './chapterNavigationBar'
 import { usePathname } from 'next/navigation'
+import { useElementHeight } from '@/hooks/useElementHeight'
 
 export function BottomBarWrapper(){
-  const barRef = useRef<HTMLElement|null>(null)
-  const [barMargin,setBarMargin] = useState(0)
   const firstPath = usePathname().split('/')[1]
-  useEffect(()=>{
-    if(!barRef.current)return
-    setBarMargin(barRef.current.getBoundingClientRect().height)
-  },[barRef])
+  const {ref:heightRef,height} = useElementHeight()
 
   return <>
-    <Box sx={{height:`${barMargin}px`}}>
-    </Box>
-    <Box ref={barRef} sx={{
-      position:'fixed',
-      left:0,
-      bottom:0,
-      width:'100vw'
-    }}>
-    {
-      firstPath == 'read' && <ChapterNavigationBar/>
-    }
+    <Box sx={{height:`${height}px`}}></Box>
+    
+    <Box ref={heightRef} sx={{position:'fixed',left:0,bottom:0,width:'100vw'}}>
+    
+    {firstPath == 'read' && <ChapterNavigationBar/>}
     <NavigationBar/>
+    
     </Box>
   </>
 }

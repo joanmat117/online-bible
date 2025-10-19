@@ -20,8 +20,8 @@ interface BibleStore {
 export const useBibleStore = create<BibleStore>((set,get)=>{
   return {
     currentChapter: {
-      bookId:'EXO',
-      chapter:10
+      bookId:'GEN',
+      chapter:1
     },
     changeChapter:({bookId,chapter})=>{
       

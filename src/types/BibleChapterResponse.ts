@@ -37,8 +37,8 @@ export type BibleChapterResponse = {
     number: number;
     content: {
       type: string;
-      number: number;
-      content: string[];
+      number?: number;
+      content: Array<string|Record<string,any>>;
     }[];
     footnotes: any[];
   };

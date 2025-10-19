@@ -63,7 +63,7 @@ const theme = useMemo(() =>
       },
     },
     shape: {
-      borderRadius: 4,
+      borderRadius: 8,
     },
   })),
 [mode]);
