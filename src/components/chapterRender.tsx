@@ -2,16 +2,13 @@
 import {useChapter} from '@/hooks/useChapter'
 import { getBookById } from '@/utils/books-utilities';
 import { useFetchChapterByParams } from '@/utils/useFetchChapterByParams';
-import { useBibleStore } from '@/zustand/useBibleStore';
-import { Typography,Button, Box, Stack } from '@mui/material'
+import { Typography,Skeleton, Box, Stack } from '@mui/material'
 import { useEffect } from 'react';
 
 export const ChapterRender = () => {
 
 
   useFetchChapterByParams()
-  const changeToPrevChapter = useBibleStore(state=>state.changeToPrevChapter)
-  const changeToNextChapter = useBibleStore(state=>state.changeToNextChapter)
   const {currentChapter,data,error,isLoading} = useChapter()
 
   const verses = data?.chapter.content
@@ -28,23 +25,23 @@ export const ChapterRender = () => {
   return (
     <Box sx={{p:1}} component={'section'}>
     {
-      isLoading && <>
-      <Typography variant='h3'>
-      Cargando {chapterTitle} {chapterNumber}
-      </Typography>
-      </>
+      isLoading && <Stack direction='column' sx={{height:'100vh',width:'100%',display:'flex',alignItems:'center',gap:3}} >
+      <Skeleton variant='text' height='100px' width={'50%'} />
+      <Skeleton variant='rounded' height='200px' width={'100%'} />
+      <Skeleton variant='rounded' height='200px' width={'100%'} />
+      <Skeleton variant='rounded' height='200px' width={'100%'} />
+      </Stack>
     } 
     {
-      !isLoading && error && <>
-      Hubo un error
-      </>
+      !isLoading && error && <Box sx={{height:'100vh',width:'100%',display:'flex',justifyContent:'center',alignItems:'center',gap:3}}>
+        <Typography variant='h3'>
+        Error {error.message}
+        </Typography>
+      </Box>
     }
     {
       data && verses && !error && !isLoading && <> 
       
-      <Button fullWidth sx={{p:2,fontSize:20,borderRadius:'12px',textTransform:'capitalize'}} onClick={changeToPrevChapter} variant='contained'>
-        Capitulo anterior
-      </Button>
       <Typography py={3} textAlign={'center'} variant='h2'>
       {chapterTitle + ' ' + chapterNumber}
       </Typography>
@@ -58,10 +55,7 @@ export const ChapterRender = () => {
           </Box>
         ))}
       </Stack>
-
-      <Button fullWidth sx={{p:2,fontSize:20,borderRadius:'12px',textTransform:'capitalize'}} onClick={changeToNextChapter} variant='contained'>
-       Capitulo siguiente
-      </Button>
+      
       </>
     }
     

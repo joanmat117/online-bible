@@ -1,4 +1,4 @@
-import NavigationBar from "@/components/navigationBar";
+import { BottomBarWrapper } from "@/components/bottomBarWrapper";
 import { Box } from "@mui/material";
 import { ReactNode } from "react";
 
@@ -17,6 +17,6 @@ export default function Roout({
   >
     {children}
   </Box>
-  <NavigationBar/>
-  </>
+  <BottomBarWrapper/>
+ </> 
 }

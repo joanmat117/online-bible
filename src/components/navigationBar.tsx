@@ -25,14 +25,8 @@ export default function NavigationBar() {
   },[pathname])
 
   return <>
-    <Box sx={{ 
-      height: 56
-    }}></Box>
     <BottomNavigation sx={{ 
-        width: '100dvw' ,
-        position:'fixed',
-        bottom:'0',
-        left:'0'
+        width: '100%'
         }} value={value} onChange={handleChange}>
       <BottomNavigationAction
         label="Inicio"
