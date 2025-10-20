@@ -3,9 +3,9 @@
 import * as React from 'react';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
-import { BookIcon, Bookmark, Home } from 'lucide-react';
 import { useState,useEffect } from 'react';
 import { useRouter,usePathname } from 'next/navigation';
+import { SolarBookmarkBold, SolarHomeAngleBold, SolarNotebookMinimalisticBold } from './icons';
 
 
 export default function NavigationBar() {
@@ -31,20 +31,20 @@ export default function NavigationBar() {
       sx={{borderRadius:'15px'}}  
       label="Inicio"
         value="home"
-        icon={<Home/>}
+        icon={<SolarHomeAngleBold/>}
       /> 
 
       <BottomNavigationAction
       sx={{borderRadius:'15px'}}  
         label="Leer"
         value="read"
-        icon={<BookIcon/>}
+        icon={<SolarNotebookMinimalisticBold/>}
       />
       <BottomNavigationAction
       sx={{borderRadius:'15px'}}  
         label="Ajustes"
         value="settings"
-        icon={<Bookmark/>}
+        icon={<SolarBookmarkBold/>}
       />
     </BottomNavigation>
     </>
