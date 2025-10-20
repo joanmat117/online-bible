@@ -19,6 +19,7 @@ export const ThemeMuiProvider = ({ children }:{children:ReactNode}) => {
   
 const theme = useMemo(() =>
   responsiveFontSizes(createTheme({
+    
     palette: {
       mode,
       primary: { main: '#ff9100' },
