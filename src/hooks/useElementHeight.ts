@@ -11,7 +11,7 @@ export function useElementHeight(){
     
       setHeight(ref.current.getBoundingClientRect().height)
   
-  },[ref.current])
+  },[ref])
 
   return {height,ref}
 }
