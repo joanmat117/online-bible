@@ -2,8 +2,9 @@
 import {useChapter} from '@/hooks/useChapter'
 import { getBookById } from '@/utils/books-utilities';
 import { useFetchChapterByParams } from '@/hooks/useFetchChapterByParams';
-import { Typography,Skeleton, Box, Stack, ButtonBase } from '@mui/material'
+import { Typography,Skeleton, Box, Stack, Button} from '@mui/material'
 import { useEffect } from 'react';
+import { WifiOff } from 'lucide-react';
 
 const renderVerseContent = (content:Array<string|Record<string,any>>) => {
     if (!content) return '';
@@ -12,16 +13,16 @@ const renderVerseContent = (content:Array<string|Record<string,any>>) => {
       if (typeof item === 'string') {
         return item;
       } else if (item.lineBreak) {
-        return '\n'; // o puedes usar <br /> si prefieres
+        return '\n';
       }
-      return ''; // caso por defecto para otros tipos de objetos
+      return '';
     }).join(' ');
   }
 
 export const ChapterRender = () => {
 
   useFetchChapterByParams()
-  const {currentChapter,data,error,isLoading} = useChapter()
+  const {currentChapter,data,error,isLoading,reloadChapter} = useChapter()
 
   const verses = data?.chapter.content
   const chapterTitle = getBookById(currentChapter.bookId)?.title
@@ -45,10 +46,14 @@ export const ChapterRender = () => {
       </Stack>
     } 
     {
-      !isLoading && error && <Box sx={{height:'100vh',width:'100%',display:'flex',justifyContent:'center',alignItems:'center',gap:3}}>
-        <Typography variant='h3'>
-        Error {error.message}
-        </Typography>
+      !isLoading && error && <Box sx={{height:'100vh',width:'100%',display:'flex',flexDirection:'column',justifyContent:'center',alignItems:'center',gap:3}}>
+      <WifiOff width={54} height={54} />  
+      <Typography variant='h6'>
+         Error, compruebe su conexion a Internet
+      </Typography>
+      <Button onClick={reloadChapter} sx={{textTransform:'capitalize',color:'text.primary',borderColor:'error.main'}} variant='outlined'>
+      Reintentar
+      </Button>
       </Box>
     }
     {

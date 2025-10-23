@@ -11,8 +11,7 @@ export function useChapter(){
   const fetchCurrentChapter = useBibleStore(state=>state.fetchCurrentChapter)
   const currentChapter = useBibleStore(state=>state.currentChapter)
 
-  useEffect(()=>{
-    const fetchChapter = async()=>{
+  const fetchChapter = async()=>{
       try{
         setError(null)
         setIsLoading(true)
@@ -25,12 +24,16 @@ export function useChapter(){
         setIsLoading(false)
       }
     }
+
+  useEffect(()=>{
+    
     fetchChapter()
   },[currentChapter])
   return {
     data,
     isLoading,
     error,
+    reloadChapter:fetchChapter,
     currentChapter
   } 
 }
