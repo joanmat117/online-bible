@@ -1,7 +1,7 @@
 import { getBookById } from "@/utils/books-utilities"
 import { useBibleStore } from "@/zustand/useBibleStore"
-import { Button,Fade,Box, AccordionSummary, Typography, AccordionDetails, Accordion, Stack } from "@mui/material"
-import { useState, useMemo, memo } from "react"
+import { Button,Fade,Box, AccordionSummary, Typography, AccordionDetails, Accordion, Stack, IconButton } from "@mui/material"
+import { useState, useMemo} from "react"
 import books from '@/data/books.json'
 import { ArrowLeft } from "lucide-react"
 
@@ -16,12 +16,17 @@ export function ChapterSelector(){
   },[currentChapter.bookId])
   
    const BooksList = useMemo(()=>{
-    return <Fade in={true}>
+    return <Box sx={{backgroundColor:'background.default',width:'100dvw',height:'100dvh',overflow:'auto',position:'fixed',top:0,left:0,zIndex:'30'}}>
     <Stack sx={{maxWidth:'md',mx:'auto',alignItems:'start',overflow:'auto',padding:2}}>
-    <Button onClick={()=>setIsOpen(false)} variant="text" sx={{borderRadius:'100%',aspectRatio:'1/1',m:1,p:0}}><ArrowLeft/></Button>    
+    <IconButton color="inherit" onClick={()=>setIsOpen(false)} sx={{
+      borderRadius:'100%',
+      m:1
+    }}>
+      <ArrowLeft/> 
+    </IconButton>    
         {
           books.map((book,index)=>(
-            <Accordion key={index} sx={{
+            <Accordion disableGutters key={index} sx={{
               backgroundColor:(t)=>t.palette.background.paper,
               width:'100%',
               '&.Mui-expanded':{
@@ -37,7 +42,13 @@ export function ChapterSelector(){
               <AccordionDetails onClick={()=>setIsOpen(false)}> 
               <Box sx={{display:'flex',flexWrap:'wrap',gap:1}}>
                 {Array.from({length:book.numberOfChapters},(_,i)=>(
-                  <Button onClick={()=>changeChapter({bookId:book.id,chapter:i+1})} key={i} size='small' variant='text' sx={{aspectRatio:'1/1',backgroundColor:(t)=>t.palette.background.default}} >{i+1} </Button>
+                  <Button onClick={()=>changeChapter({bookId:book.id,chapter:i+1})} key={i} color="inherit" size='medium' variant='text' sx={{
+                    flex:1,
+                    paddingY:1,
+                    backgroundColor:'background.paper'
+                  }} >
+                  {i+1} 
+                  </Button>
                 ))}
               </Box>
               </AccordionDetails>
@@ -45,7 +56,7 @@ export function ChapterSelector(){
           ))
         }
         </Stack>
-        </Fade>
+      </Box>
 
    },[books])
 
@@ -55,9 +66,8 @@ export function ChapterSelector(){
   <Button onClick={()=>setIsOpen(true)} sx={{textTransform:'capitalize',borderRadius:'14px'}} variant='outlined'>
       {currentBook + ' ' + currentChapter.chapter}
   </Button>
-  <Box sx={{display:isOpen?'block':'none',backgroundColor:'background.default',width:'100dvw',height:'100dvh',overflow:'auto',position:'fixed',top:0,left:0,zIndex:'30',bgcolor:'background.paper'}}>
-
-  {BooksList}
-  </Box>
+  <Fade in={isOpen} timeout={300}>
+    {BooksList}
+  </Fade>
   </>
 }

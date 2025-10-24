@@ -2,7 +2,7 @@
 import {useChapter} from '@/hooks/useChapter'
 import { getBookById } from '@/utils/books-utilities';
 import { useFetchChapterByParams } from '@/hooks/useFetchChapterByParams';
-import { Typography,Skeleton, Box, Stack, Button} from '@mui/material'
+import { Typography,Fade,Skeleton, Box, Stack, Button} from '@mui/material'
 import { useEffect } from 'react';
 import { WifiOff } from 'lucide-react';
 
@@ -37,9 +37,12 @@ export const ChapterRender = () => {
 
   return (
     <Box sx={{p:1,mb:3}} component={'section'}>
+      <Stack py={3} direction='column' gap={1} sx={{alignItems:'center'}}>
+      <Typography variant='h6' color='textSecondary' >{chapterTitle}</Typography>
+      <Typography variant='h1' component={'p'} fontWeight={800} sx={{fontFamily:'"Source Serif 4"'}}>{chapterNumber}</Typography>
+      </Stack>
     {
       isLoading && !data && <Stack direction='column' sx={{height:'100vh',width:'100%',display:'flex',alignItems:'center',gap:3}} >
-      <Skeleton variant='text' height='100px' width={'50%'} />
       <Skeleton variant='rounded' height='200px' width={'100%'} />
       <Skeleton variant='rounded' height='200px' width={'100%'} />
       <Skeleton variant='rounded' height='200px' width={'100%'} />
@@ -56,14 +59,9 @@ export const ChapterRender = () => {
       </Button>
       </Box>
     }
-    {
-      data && verses && !error && <> 
-      <Stack py={3} direction='column' gap={1} sx={{alignItems:'center'}}>
-      <Typography variant='h6' color='textSecondary' >{chapterTitle}</Typography>
-      <Typography variant='h1' component={'p'} fontWeight={800} sx={{fontFamily:'"Source Serif 4"'}}>{chapterNumber}</Typography>
-      </Stack>
+    <Fade in={Boolean(data && verses != undefined && !error && !isLoading)}> 
       <Stack gap={0.5} direction='column' px={1}>
-        {verses.map((verse,index) => (
+        {verses?.map((verse,index) => (
           <Box sx={{borderRadius:'10px',border:'1px solid transparent',p:1,
           '&:hover':{
             border:(theme)=>`1px solid ${theme.palette.primary.main}`,
@@ -78,8 +76,7 @@ export const ChapterRender = () => {
         ))}
       </Stack>
       
-      </>
-    }
+      </Fade>
     
     </Box>
   );
