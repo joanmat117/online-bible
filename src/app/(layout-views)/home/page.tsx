@@ -1,8 +1,7 @@
-import BasicList from "@/components/basicList";
-import { Typography } from "@mui/material";
+import { RandomVerseCard } from "@/components/randomVerseCard";
 
-export default function Root() {
+export default function Home() {
   return <>
-    
+    <RandomVerseCard/>
   </>;
 }
