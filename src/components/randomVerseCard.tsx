@@ -11,7 +11,15 @@ export function RandomVerseCard(){
   const router = useRouter()
 
   if(!randomVerse) return
-  return <Stack direction='column' gap={1} sx={{borderRadius:'20px',px:2,py:1,m:2,backgroundColor:'secondary.main'}}>
+  return <Stack direction='column' gap={1} sx={{
+    borderRadius:'20px',
+    px:2,
+    py:1,
+    m:2,
+    border:2,
+    borderColor:'secondary.main',
+    backgroundColor:'background.paper',
+  }}>
   <Stack direction={'row'} sx={{justifyContent:'space-between',alignItems:'center'}}>
     <Typography sx={{fontFamily:'"Source Serif 4"',fontWeight:600}} variant='body1'>{verseRoute}</Typography>
     <IconButton onClick={()=>{
