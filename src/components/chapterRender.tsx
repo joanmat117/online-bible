@@ -38,8 +38,8 @@ export const ChapterRender = () => {
   return (
     <Box sx={{p:1,mb:3}} component={'section'}>
       <Stack py={3} direction='column' gap={1} sx={{alignItems:'center'}}>
-      <Typography variant='h6' color='textSecondary' >{chapterTitle}</Typography>
-      <Typography variant='h1' component={'p'} fontWeight={800} sx={{fontFamily:'"Source Serif 4"'}}>{chapterNumber}</Typography>
+      <Typography variant='h6' sx={{fontFamily:'Crimson Pro'}} color='textSecondary' >{chapterTitle}</Typography>
+      <Typography variant='h1' component={'p'} fontWeight={800} sx={{fontFamily:'"Crimson Pro"'}}>{chapterNumber}</Typography>
       </Stack>
     {
       isLoading && !data && <Stack direction='column' sx={{height:'100vh',width:'100%',display:'flex',alignItems:'center',gap:3}} >
@@ -62,13 +62,8 @@ export const ChapterRender = () => {
     <Fade in={Boolean(data && verses != undefined && !error && !isLoading)}> 
       <Stack gap={0.5} direction='column' px={1}>
         {verses?.map((verse,index) => (
-          <Box sx={{borderRadius:'10px',border:'1px solid transparent',p:1,
-          '&:hover':{
-            border:(theme)=>`1px solid ${theme.palette.primary.main}`,
-            transition:'0.3s'
-          }
-          }} key={index}>
-            <Typography sx={{display:'inline',lineHeight:1.4,fontSize:20,fontFamily:'"Source Serif 4"'}} variant='body1' fontWeight={verse.type == 'heading'? 700 : 400}>
+          <Box sx={{borderRadius:'10px',border:'1px solid transparent',p:1}} key={index}>
+            <Typography sx={{display:'inline',lineHeight:1.4,fontSize:20,fontFamily:'"Crimson Pro"'}} variant='body1' fontWeight={verse.type == 'heading'? 700 : 400}>
             {verse.number && <Typography sx={{fontStyle:'italic'}} variant='caption' mx={1}>{verse.number}</Typography>} 
             {renderVerseContent(verse.content)}
             </Typography>
