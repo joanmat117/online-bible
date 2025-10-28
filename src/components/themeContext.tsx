@@ -1,5 +1,5 @@
 "use client"
-import { createContext, ReactNode, useContext, useMemo, useState } from 'react';
+import { createContext, ReactNode,useEffect, useContext, useMemo, useState } from 'react';
 import { createTheme, PaletteMode, Theme, ThemeProvider,responsiveFontSizes } from '@mui/material/styles';
 
 type ContextType = {
@@ -11,7 +11,11 @@ type ContextType = {
 const ThemeContext = createContext<ContextType>(null);
 
 export const ThemeMuiProvider = ({ children }:{children:ReactNode}) => {
-  const [mode, setMode] = useState<PaletteMode>(()=>(localStorage.getItem('themeMode') || 'light')as PaletteMode)
+  const [mode, setMode] = useState<PaletteMode>('light')
+  
+  useEffect(() => {
+    setMode(()=>(localStorage.getItem('themeMode')||'light')as PaletteMode)
+  }, [])
 
   const toggleTheme = () => {
     setMode((prevMode) =>{
