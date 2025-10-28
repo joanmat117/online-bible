@@ -34,6 +34,7 @@ export function ChapterSearchBar(){
     borderRadius:'100px',
     display:'flex',
     width:'100%',
+    borderColor:(t)=>t.palette.secondary.main,
     alignItems:'center',
     maxWidth:{xs:'300px',sm:'400px'},
     mx:'auto',
@@ -44,11 +45,19 @@ export function ChapterSearchBar(){
       size="small"
       sx={{width:'100%',fontSize:30,display:'flex',alignItems:'center'}}
       options={chaptersArray}
+      slotProps={{
+          paper:{
+            variant:'outlined',
+            sx:{
+              borderRadius:'20px'
+            }
+          }
+        }}
       renderInput={(params)=>(
         <TextField
           onKeyDown={handleEnterPress}
         sx={{
-          padding:"0px 5px",
+          padding:"3px 4px",
           "& .MuiOutlinedInput-root": {
           "& fieldset": {
             border: "none", // Sin borde normal

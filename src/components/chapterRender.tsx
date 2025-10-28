@@ -2,9 +2,25 @@
 import {useChapter} from '@/hooks/useChapter'
 import { getBookById } from '@/utils/books-utilities';
 import { useFetchChapterByParams } from '@/hooks/useFetchChapterByParams';
-import { Typography,Fade,Skeleton, Box, Stack, Button} from '@mui/material'
-import { useEffect } from 'react';
+import { Typography,Fade,Skeleton, Box, Stack, Button, Dialog, DialogContent, IconButton} from '@mui/material'
+import { useEffect,useState } from 'react';
 import { WifiOff } from 'lucide-react';
+import { SolarCheckCircleLinear, SolarCloseCircleLinear, SolarCopyLinear } from './icons';
+import { useCopyText } from '@/hooks/useCopyText';
+
+interface Verse {
+    type: string;
+    number?: number;
+    content: Array<string | Record<string, any>>;
+}
+
+const versesColor = [
+  "#e6070e",
+  "#e69407",
+  "#00c400",
+  "#3e08d1",
+  "#de09c1"
+]
 
 const renderVerseContent = (content:Array<string|Record<string,any>>) => {
     if (!content) return '';
@@ -12,18 +28,25 @@ const renderVerseContent = (content:Array<string|Record<string,any>>) => {
     return content.map((item) => {
       if (typeof item === 'string') {
         return item;
-      } else if (item.lineBreak) {
-        return '\n';
+      } 
+    else if (typeof item === 'object'){
+      if(item.text){
+        return item.text
       }
+      if(item.lineBreak){
+        return '\n'
+      }
+    }
       return '';
     }).join(' ');
   }
 
 export const ChapterRender = () => {
-
+  
+  const [selectedVerse,setSelectedVerse] = useState<Verse|null>(null)
   useFetchChapterByParams()
   const {currentChapter,data,error,isLoading,reloadChapter} = useChapter()
-
+  const {copyText,copyState} = useCopyText()
   const verses = data?.chapter.content
   const chapterTitle = getBookById(currentChapter.bookId)?.title
   const chapterNumber = currentChapter.chapter
@@ -36,6 +59,36 @@ export const ChapterRender = () => {
   },[currentChapter])
 
   return (
+    <>
+    <Dialog open={Boolean(selectedVerse)} onClose={()=>setSelectedVerse(null)} >
+        <DialogContent sx={{
+          backgroundColor:'background.paper'
+        }} >
+          {selectedVerse !== null && <>
+          <Typography fontWeight={700} textAlign={'center'} variant='body1' sx={{fontFamily:'"Lato"'}}>
+              {`${chapterTitle} ${chapterNumber}:${selectedVerse.number}`}
+          </Typography>
+          <Typography variant='body1' sx={{fontSize:19,fontFamily:'"crimson Pro"',my:2}}>
+          {renderVerseContent(selectedVerse.content)}
+          </Typography>
+          <Box sx={{
+            display:'flex',
+            flexWrap:'wrap'
+          }}>
+              <Button variant='outlined'  onClick={()=>copyText(
+                renderVerseContent(selectedVerse.content)
+              )} sx={{
+                flex:1,
+                borderRadius:'10px'
+              }}>
+                {copyState === -1 && <SolarCloseCircleLinear/>}
+                {copyState === 0 && <SolarCopyLinear/>}
+                {copyState === 1 && <SolarCheckCircleLinear/>}
+              </Button>
+          </Box>
+          </>}
+        </DialogContent>
+    </Dialog>
     <Box sx={{p:1,mb:3}} component={'section'}>
       <Stack py={3} direction='column' gap={1} sx={{alignItems:'center'}}>
       <Typography variant='h6' sx={{fontFamily:'Crimson Pro'}} color='textSecondary' >{chapterTitle}</Typography>
@@ -62,9 +115,19 @@ export const ChapterRender = () => {
     <Fade in={Boolean(data && verses != undefined && !error && !isLoading)}> 
       <Stack gap={0.5} direction='column' px={1}>
         {verses?.map((verse,index) => (
-          <Box sx={{borderRadius:'10px',border:'1px solid transparent',p:1}} key={index}>
+          <Box sx={{
+              borderRadius:'10px',
+              position:'relative',
+              border:'1px solid transparent',
+              p:1
+            }} key={index}  onClick={()=>verse.number? setSelectedVerse(verse):undefined}
+            >
             <Typography sx={{display:'inline',lineHeight:1.4,fontSize:20,fontFamily:'"Crimson Pro"'}} variant='body1' fontWeight={verse.type == 'heading'? 700 : 400}>
-            {verse.number && <Typography sx={{fontStyle:'italic'}} variant='caption' mx={1}>{verse.number}</Typography>} 
+            {verse.number && 
+              <Typography sx={{fontStyle:'italic',color:'#fff',backgroundColor:versesColor[verse.number % versesColor.length]}} variant='caption' px={1} borderRadius={'100px'} mx={1}>
+                {verse.number}
+              </Typography>
+            } 
             {renderVerseContent(verse.content)}
             </Typography>
           </Box>
@@ -74,6 +137,7 @@ export const ChapterRender = () => {
       </Fade>
     
     </Box>
+    </>
   );
 };
 

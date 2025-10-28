@@ -16,12 +16,12 @@ export function RandomVerseCard(){
     px:2,
     py:1,
     m:2,
-    border:2,
+    border:1,
     borderColor:'secondary.main',
     backgroundColor:'background.paper',
   }}>
   <Stack direction={'row'} sx={{justifyContent:'space-between',alignItems:'center'}}>
-    <Typography sx={{fontFamily:'"Lato"',fontWeight:600}} variant='body1'>{verseRoute}</Typography>
+    <Typography sx={{fontFamily:'"Lato"',fontWeight:600}} color="textSecondary" variant='body1'>{verseRoute}</Typography>
     <IconButton onClick={()=>{
       changeChapter({bookId:randomVerse.bookId,chapter:randomVerse.chapter})
       router.push('/read')
@@ -29,7 +29,7 @@ export function RandomVerseCard(){
       <SolarRoundAltArrowRightBroken/>
     </IconButton>
   </Stack>
-  <Typography variant="body1" sx={{fontFamily:'"Crimson Pro"',fontSize:18}}>
+  <Typography variant="body1" sx={{fontFamily:'"Crimson Pro"',fontSize:20}}>
     {randomVerse.text}
   </Typography>
   <Stack direction='row' sx={{justifyContent:'space-between'}}>
