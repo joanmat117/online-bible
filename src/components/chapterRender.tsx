@@ -3,7 +3,7 @@ import {useChapter} from '@/hooks/useChapter'
 import { getBookById } from '@/utils/books-utilities';
 import { useFetchChapterByParams } from '@/hooks/useFetchChapterByParams';
 import { Typography,Fade,Skeleton, Box, Stack, Button, Dialog, DialogContent, IconButton} from '@mui/material'
-import { useEffect,useState } from 'react';
+import { ReactNode, useEffect,useState } from 'react';
 import { WifiOff } from 'lucide-react';
 import { SolarCheckCircleLinear, SolarCloseCircleLinear, SolarCopyLinear } from './icons';
 import { useCopyText } from '@/hooks/useCopyText';
@@ -46,9 +46,9 @@ export const ChapterRender = () => {
   const [selectedVerse,setSelectedVerse] = useState<Verse|null>(null)
   useFetchChapterByParams()
   const {currentChapter,data,error,isLoading,reloadChapter} = useChapter()
-  const {copyText,copyState} = useCopyText()
   const verses = data?.chapter.content
-  const chapterTitle = getBookById(currentChapter.bookId)?.title
+  const bookId = currentChapter.bookId
+  const bookTitle = getBookById(currentChapter.bookId)?.title
   const chapterNumber = currentChapter.chapter
 
   useEffect(()=>{
@@ -60,38 +60,10 @@ export const ChapterRender = () => {
 
   return (
     <>
-    <Dialog open={Boolean(selectedVerse)} onClose={()=>setSelectedVerse(null)} >
-        <DialogContent sx={{
-          backgroundColor:'background.paper'
-        }} >
-          {selectedVerse !== null && <>
-          <Typography fontWeight={700} textAlign={'center'} variant='body1' sx={{fontFamily:'"Lato"'}}>
-              {`${chapterTitle} ${chapterNumber}:${selectedVerse.number}`}
-          </Typography>
-          <Typography variant='body1' sx={{fontSize:19,fontFamily:'"crimson Pro"',my:2}}>
-          {renderVerseContent(selectedVerse.content)}
-          </Typography>
-          <Box sx={{
-            display:'flex',
-            flexWrap:'wrap'
-          }}>
-              <Button variant='outlined'  onClick={()=>copyText(
-                renderVerseContent(selectedVerse.content)
-              )} sx={{
-                flex:1,
-                borderRadius:'10px'
-              }}>
-                {copyState === -1 && <SolarCloseCircleLinear/>}
-                {copyState === 0 && <SolarCopyLinear/>}
-                {copyState === 1 && <SolarCheckCircleLinear/>}
-              </Button>
-          </Box>
-          </>}
-        </DialogContent>
-    </Dialog>
+    <SelectVerseDialog chapterNumber={chapterNumber} bookTitle={bookTitle} selectedVerse={selectedVerse} bookId={bookId} setSelectedVerse={setSelectedVerse}/>
     <Box sx={{p:1,mb:3}} component={'section'}>
       <Stack py={3} direction='column' gap={1} sx={{alignItems:'center'}}>
-      <Typography variant='h6' sx={{fontFamily:'Crimson Pro'}} color='textSecondary' >{chapterTitle}</Typography>
+      <Typography variant='h6' sx={{fontFamily:'Crimson Pro'}} color='textSecondary' >{bookTitle}</Typography>
       <Typography variant='h1' component={'p'} fontWeight={800} sx={{fontFamily:'"Crimson Pro"'}}>{chapterNumber}</Typography>
       </Stack>
     {
@@ -141,3 +113,55 @@ export const ChapterRender = () => {
   );
 };
 
+interface DialogParams {
+  selectedVerse:Verse|null,
+  bookId:string,
+  bookTitle:string|undefined,
+  chapterNumber:number,
+  setSelectedVerse:(newState:Verse|null)=>void
+}
+
+function SelectVerseDialog({selectedVerse,bookId,bookTitle,chapterNumber,setSelectedVerse}:DialogParams){
+
+  const {copyText,copyState} = useCopyText()
+
+  return <Dialog open={Boolean(selectedVerse)} onClose={()=>setSelectedVerse(null)} >
+      <DialogContent sx={{
+        backgroundColor:'background.paper'
+      }} >
+        {selectedVerse !== null && <>
+        <Typography fontWeight={700} textAlign={'center'} variant='body1' sx={{fontFamily:'"Lato"'}}>
+            {`${bookTitle} ${chapterNumber}:${selectedVerse.number}`}
+        </Typography>
+        <Typography variant='body1' sx={{fontSize:19,fontFamily:'"crimson Pro"',my:2}}>
+        {renderVerseContent(selectedVerse.content)}
+        </Typography>
+        <Box sx={{
+          display:'flex',
+          flexWrap:'wrap',
+          gap:1
+        }}>
+          <DialogButton onClick={()=>copyText(
+            renderVerseContent(selectedVerse.content)
+          )}>
+              {copyState === -1 && <SolarCloseCircleLinear/>}
+              {copyState === 0 && <SolarCopyLinear/>}
+              {copyState === 1 && <SolarCheckCircleLinear/>}
+          </DialogButton>
+          
+        </Box>
+        </>}
+      </DialogContent>
+  </Dialog> 
+}
+
+function DialogButton({children,onClick}:{children?:ReactNode,onClick?:()=>void}){
+  return <Button variant='outlined'  onClick={onClick} sx={{
+      flex:1,
+      minWidth:'100px',
+      borderRadius:'10px'
+    }}>
+  {children}
+  </Button>
+
+}
