@@ -6,6 +6,6 @@ export function ThemeSwitch(){
   const {toggleTheme,mode} = useTheme()
 
   return <>
-  <Switch checked={mode == 'dark'? true:false} onChange={()=>toggleTheme()} />
+  <Switch sx={{overflow:'visible'}} checked={mode == 'dark'? true:false} onChange={()=>toggleTheme()} />
   </>
 }

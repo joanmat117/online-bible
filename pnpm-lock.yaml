@@ -23,6 +23,9 @@ importers:
       '@mui/material-nextjs':
         specifier: ^7.3.3
         version: 7.3.3(@emotion/cache@11.14.0)(@emotion/react@11.14.0(@types/react@19.1.8)(react@19.1.0))(@types/react@19.1.8)(next@15.4.4(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react@19.1.0)
+      dexie:
+        specifier: ^4.2.1
+        version: 4.2.1
       lucide-react:
         specifier: ^0.525.0
         version: 0.525.0(react@19.1.0)
@@ -636,6 +639,9 @@ packages:
   detect-libc@2.0.4:
     resolution: {integrity: sha512-3UDv+G9CsCKO1WKMGw9fwq/SWJYbI0c5Y7LU1AXYoDdbhE2AHQ6N6Nb34sG8Fj7T5APy8qXDCKuuIHd1BR0tVA==}
     engines: {node: '>=8'}
+
+  dexie@4.2.1:
+    resolution: {integrity: sha512-Ckej0NS6jxQ4Po3OrSQBFddayRhTCic2DoCAG5zacOfOVB9P2Q5Xc5uL/nVa7ZVs+HdMnvUPzLFCB/JwpB6Csg==}
 
   dom-helpers@5.2.1:
     resolution: {integrity: sha512-nRCa7CK3VTrM2NmGkIy4cbK7IZlgBE/PYMn55rrXefr5xXDP0LdtfPnblFDoVdcAfslJ7or6iqAUnx0CCGIWQA==}
@@ -1496,6 +1502,8 @@ snapshots:
       ms: 2.1.3
 
   detect-libc@2.0.4: {}
+
+  dexie@4.2.1: {}
 
   dom-helpers@5.2.1:
     dependencies:
