@@ -1,0 +1,32 @@
+[
+  {
+    "background": "#e6070e44",
+    "foregroundLight": "#f58388",
+    "foregroundDark": "#a3050a",
+    "pure": "#e6070e"
+  },
+  {
+    "background": "#e6940744",
+    "foregroundLight": "#f2c583",
+    "foregroundDark": "#a86905",
+    "pure": "#e69407"
+  },
+  {
+    "background": "#00c40044",
+    "foregroundLight": "#66e066",
+    "foregroundDark": "#008a00",
+    "pure": "#00c400"
+  },
+  {
+    "background": "#3e08d144",
+    "foregroundLight": "#9e83e9",
+    "foregroundDark": "#2c0694",
+    "pure": "#3e08d1"
+  },
+  {
+    "background": "#de09c144",
+    "foregroundLight": "#ef83e5",
+    "foregroundDark": "#9b0687",
+    "pure": "#de09c1"
+  }
+]

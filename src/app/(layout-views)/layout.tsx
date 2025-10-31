@@ -11,8 +11,11 @@ export default function Roout({
   return <>
   <Box sx={{
     marginX:'auto',
+    width:'100%',
     maxWidth:'md',
-    minHeight:'100dvh'
+    display:'flex',
+    flexDirection:'column',
+    flex:1
   }}
   >
     {children}

@@ -31,8 +31,8 @@ const theme = useMemo(() =>
     
     palette: {
       mode,
-      primary: { main: '#4d61f7' },
-      secondary: { main: '#00a1e0' },
+      primary: { main: mode === 'dark'? '#0f6cd6': '#1565C0' }, //#1565C0
+      secondary: { main: '#F9A825' },
       background: {
         default: mode === 'dark' ? '#0b0b0e' : '#fafafa',
         paper: mode === 'dark' ? '#15151a' : '#fff',

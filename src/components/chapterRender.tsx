@@ -10,6 +10,8 @@ import { useCopyText } from '@/hooks/useCopyText';
 import { useSavedVerses } from '@/hooks/useSavedVerses';
 import { deleteVerseInDB, saveVerseInDB } from '@/services/dexie-api';
 import {renderVerseContent} from '@/utils/renderVerseContent'
+import versesColor from '@/data/versesColor.json'
+import { useTheme} from '@/components/themeContext'
 
 interface Verse {
     type: string;
@@ -17,18 +19,11 @@ interface Verse {
     content: Array<string | Record<string, any>>;
 }
 
-const versesColor = [
-  "#e6070e",
-  "#e69407",
-  "#00c400",
-  "#3e08d1",
-  "#de09c1"
-]
-
 export const ChapterRender = () => {
   
   const [selectedVerse,setSelectedVerse] = useState<Verse|null>(null)
   useFetchChapterByParams()
+  const {mode} = useTheme()
   const {currentChapter,data,error,isLoading,reloadChapter} = useChapter()
   const verses = data?.chapter.content
   const bookId = currentChapter.bookId
@@ -45,7 +40,7 @@ export const ChapterRender = () => {
   return (
     <>
     <SelectVerseDialog chapterNumber={chapterNumber} bookTitle={bookTitle} selectedVerse={selectedVerse} bookId={bookId} setSelectedVerse={setSelectedVerse}/>
-    <Box sx={{p:1,mb:3}} component={'section'}>
+    <Box sx={{p:1,mb:3,flex:1,display:'flex',flexDirection:'column',width:'100%'}} component={'section'}>
       <Stack py={3} direction='column' gap={1} sx={{alignItems:'center'}}>
       <Typography variant='h6' sx={{fontFamily:'Crimson Pro'}} color='textSecondary' >{bookTitle}</Typography>
       <Typography variant='h1' component={'p'} fontWeight={800} sx={{fontFamily:'"Crimson Pro"'}}>{chapterNumber}</Typography>
@@ -58,7 +53,7 @@ export const ChapterRender = () => {
       </Stack>
     } 
     {
-      !isLoading && error && <Box sx={{height:'100vh',width:'100%',display:'flex',flexDirection:'column',justifyContent:'center',alignItems:'center',gap:3}}>
+      !isLoading && error && <Box sx={{flex:1,width:'100%',display:'flex',flexDirection:'column',justifyContent:'center',alignItems:'center',gap:3}}>
       <WifiOff width={54} height={54} />  
       <Typography variant='h6'>
          Error, compruebe su conexion a Internet
@@ -70,7 +65,13 @@ export const ChapterRender = () => {
     }
     <Fade in={Boolean(data && verses != undefined && !error && !isLoading)}> 
       <Stack gap={0.5} direction='column' px={1}>
-        {verses?.map((verse,index) => (
+        {verses?.map((verse,index) => {
+          const color = versesColor[index % versesColor.length]
+          const foregroundColor = mode == 'dark'? 
+            color.foregroundLight:
+            color.foregroundDark
+
+          return (
           <Box sx={{
               borderRadius:'10px',
               position:'relative',
@@ -80,14 +81,18 @@ export const ChapterRender = () => {
             >
             <Typography sx={{display:'inline',lineHeight:1.4,fontSize:20,fontFamily:'"Crimson Pro"'}} variant='body1' fontWeight={verse.type == 'heading'? 700 : 400}>
             {verse.number && 
-              <Typography sx={{fontStyle:'italic',color:'#fff',backgroundColor:versesColor[verse.number % versesColor.length]}} variant='caption' px={1} borderRadius={'100px'} mx={1}>
+              <Typography sx={{
+                backgroundColor:color.background,
+                color:foregroundColor,
+                fontWeight:800
+            }} variant='caption' px={1} borderRadius={'100px'} mx={1}>
                 {verse.number}
               </Typography>
             } 
             {renderVerseContent(verse.content)}
             </Typography>
           </Box>
-        ))}
+        )})}
       </Stack>
       
       </Fade>

@@ -6,8 +6,8 @@ export default function Home() {
     paddingY:3,
     paddingX:1
   }}>
-    <Typography color='secondary' variant="h1" component={'h1'} textAlign={'center'} sx={{
-      fontFamily:'"Crimson Pro"',
+    <Typography color={'textPrimary'} variant="h1" component={'h1'} textAlign={'center'} sx={{
+      fontFamily:'"UnifrakturMaguntia"',
       fontWeight:800,
       py:4
     }}>

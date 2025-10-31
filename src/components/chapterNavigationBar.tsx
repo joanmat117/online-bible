@@ -1,7 +1,7 @@
 import { useBibleStore } from '@/zustand/useBibleStore'
 import {Button, Stack} from '@mui/material'
-import { ArrowLeft, ArrowRight } from 'lucide-react'
 import { ChapterSelector } from './chapterSelector'
+import { SolarAltArrowLeftBold, SolarAltArrowRightBold } from './icons'
 
 export function ChapterNavigationBar(){
   const changeToNextChapter = useBibleStore(state=>state.changeToNextChapter)
@@ -16,13 +16,13 @@ export function ChapterNavigationBar(){
       <Button 
       onClick={changeToPrevChapter}
       sx={{borderRadius:'100px',maxWidth:'100px'}} fullWidth variant='text'>
-        <ArrowLeft/>
+        <SolarAltArrowLeftBold/>
       </Button>
       <ChapterSelector/>      
       <Button 
       onClick={changeToNextChapter}
       sx={{borderRadius:'100px',maxWidth:'100px'}} fullWidth variant='text'>
-        <ArrowRight/>
+        <SolarAltArrowRightBold/>
       </Button>
     </Stack>
   </>

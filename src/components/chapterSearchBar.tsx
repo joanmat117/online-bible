@@ -55,6 +55,7 @@ export function ChapterSearchBar(){
         }}
       renderInput={(params)=>(
         <TextField
+        placeholder="Romanos 12"
           onKeyDown={handleEnterPress}
         sx={{
           padding:"3px 4px",

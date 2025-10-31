@@ -15,7 +15,7 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body
-style={{fontFamily:'"Lato"'}}  
+style={{fontFamily:'"Lato"',minHeight:'100dvh',display:'flex',flexDirection:'column'}}  
       >
         <Providers>
           {children}

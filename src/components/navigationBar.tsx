@@ -5,7 +5,7 @@ import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import { useState,useEffect } from 'react';
 import { useRouter,usePathname } from 'next/navigation';
-import { SolarBookmarkBold, SolarHomeAngleBold, SolarNotebookMinimalisticBold } from './icons';
+import { SolarBookmarkBold, SolarHomeAngleBold, SolarNotebookMinimalisticBold, SolarSettingsMinimalisticBold } from './icons';
 
 
 export default function NavigationBar() {
@@ -25,26 +25,29 @@ export default function NavigationBar() {
   return <>
     <BottomNavigation sx={{ 
         width: '100%',
-        p:'4px'
+        p:'4px',
+        '& .MuiBottomNavigationAction-label':{
+          fontWeight:600
+        }
         }} value={value} onChange={handleChange}>
       <BottomNavigationAction
-      sx={{borderRadius:'15px'}}  
+      sx={{borderRadius:'5px'}}  
       label="Inicio"
         value="home"
         icon={<SolarHomeAngleBold/>}
       /> 
 
       <BottomNavigationAction
-      sx={{borderRadius:'15px'}}  
+      sx={{borderRadius:'5px'}}  
         label="Leer"
         value="read"
         icon={<SolarNotebookMinimalisticBold/>}
       />
       <BottomNavigationAction
-      sx={{borderRadius:'15px'}}  
+      sx={{borderRadius:'5px'}}  
         label="Ajustes"
         value="settings"
-        icon={<SolarBookmarkBold/>}
+        icon={<SolarSettingsMinimalisticBold/>}
       />
     </BottomNavigation>
     </>

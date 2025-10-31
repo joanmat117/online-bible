@@ -17,7 +17,7 @@ export function RandomVerseCard(){
     py:1,
     m:2,
     border:1,
-    borderColor:'secondary.main',
+    borderColor:'primary.main',
     backgroundColor:'background.paper',
   }}>
   <Stack direction={'row'} sx={{justifyContent:'space-between',alignItems:'center'}}>

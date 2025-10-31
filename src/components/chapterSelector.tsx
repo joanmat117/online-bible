@@ -3,7 +3,7 @@ import { useBibleStore } from "@/zustand/useBibleStore"
 import { Button,Fade,Box, AccordionSummary, Typography, AccordionDetails, Accordion, Stack, IconButton } from "@mui/material"
 import { useState, useMemo} from "react"
 import books from '@/data/books.json'
-import { ArrowLeft } from "lucide-react"
+import { SolarAltArrowLeftBold } from "./icons"
 
 
 export function ChapterSelector(){
@@ -37,7 +37,7 @@ export function ChapterSelector(){
       borderRadius:'100%',
       m:1
     }}>
-      <ArrowLeft/> 
+      <SolarAltArrowLeftBold/>
     </IconButton>    
         {
           books.map((book,index)=>(
