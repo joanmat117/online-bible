@@ -2,11 +2,14 @@
 import {useChapter} from '@/hooks/useChapter'
 import { getBookById } from '@/utils/books-utilities';
 import { useFetchChapterByParams } from '@/hooks/useFetchChapterByParams';
-import { Typography,Fade,Skeleton, Box, Stack, Button, Dialog, DialogContent, IconButton} from '@mui/material'
-import { ReactNode, useEffect,useState } from 'react';
+import { Typography,Fade,Skeleton, Box, Stack, Button, Dialog, DialogContent} from '@mui/material'
+import { ReactNode, useEffect,useMemo,useState } from 'react';
 import { WifiOff } from 'lucide-react';
-import { SolarCheckCircleLinear, SolarCloseCircleLinear, SolarCopyLinear } from './icons';
+import { SolarBookmarkBold, SolarBookmarkLinear, SolarCheckCircleLinear, SolarCloseCircleLinear, SolarCopyLinear} from './icons';
 import { useCopyText } from '@/hooks/useCopyText';
+import { useSavedVerses } from '@/hooks/useSavedVerses';
+import { deleteVerseInDB, saveVerseInDB } from '@/services/dexie-api';
+import {renderVerseContent} from '@/utils/renderVerseContent'
 
 interface Verse {
     type: string;
@@ -21,25 +24,6 @@ const versesColor = [
   "#3e08d1",
   "#de09c1"
 ]
-
-const renderVerseContent = (content:Array<string|Record<string,any>>) => {
-    if (!content) return '';
-    
-    return content.map((item) => {
-      if (typeof item === 'string') {
-        return item;
-      } 
-    else if (typeof item === 'object'){
-      if(item.text){
-        return item.text
-      }
-      if(item.lineBreak){
-        return '\n'
-      }
-    }
-      return '';
-    }).join(' ');
-  }
 
 export const ChapterRender = () => {
   
@@ -92,7 +76,7 @@ export const ChapterRender = () => {
               position:'relative',
               border:'1px solid transparent',
               p:1
-            }} key={index}  onClick={()=>verse.number? setSelectedVerse(verse):undefined}
+            }} key={index}  onClick={()=>verse.number && setSelectedVerse(verse)}
             >
             <Typography sx={{display:'inline',lineHeight:1.4,fontSize:20,fontFamily:'"Crimson Pro"'}} variant='body1' fontWeight={verse.type == 'heading'? 700 : 400}>
             {verse.number && 
@@ -124,6 +108,26 @@ interface DialogParams {
 function SelectVerseDialog({selectedVerse,bookId,bookTitle,chapterNumber,setSelectedVerse}:DialogParams){
 
   const {copyText,copyState} = useCopyText()
+  const chapterSavedVerses = useSavedVerses({bookId,chapter:chapterNumber})
+  const currentSavedVerse = useMemo(()=>{
+    if(!selectedVerse) return undefined
+    return chapterSavedVerses?.find((verse)=>verse.number==selectedVerse.number)
+  },[selectedVerse,chapterSavedVerses])
+  
+
+  const toggleSave = ()=>{
+    if(!selectedVerse || !selectedVerse.number) return
+    if(currentSavedVerse){
+      deleteVerseInDB(currentSavedVerse.id)
+    } else {
+      saveVerseInDB({
+        number:selectedVerse.number,
+        bookId,
+        chapter:chapterNumber,
+        content:renderVerseContent(selectedVerse.content)
+      })
+    }
+  }
 
   return <Dialog open={Boolean(selectedVerse)} onClose={()=>setSelectedVerse(null)} >
       <DialogContent sx={{
@@ -148,7 +152,13 @@ function SelectVerseDialog({selectedVerse,bookId,bookTitle,chapterNumber,setSele
               {copyState === 0 && <SolarCopyLinear/>}
               {copyState === 1 && <SolarCheckCircleLinear/>}
           </DialogButton>
-          
+
+          <DialogButton onClick={()=>toggleSave()}>
+            {currentSavedVerse?
+            <SolarBookmarkBold/>:
+            <SolarBookmarkLinear/>
+            }  
+          </DialogButton>
         </Box>
         </>}
       </DialogContent>

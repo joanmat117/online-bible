@@ -13,7 +13,7 @@ export async function saveVerseInDB({bookId,number,chapter,content}:Omit<SavedVe
   }
 }
 
-export async function deleteVerseOnDB(id:number){
+export async function deleteVerseInDB(id:number){
   try {
   await db.savedVerses.delete(id)
   } catch(e){
