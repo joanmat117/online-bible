@@ -12,7 +12,7 @@ export function BottomBarWrapper(){
   return <>
     <Box sx={{height:`${height}px`}}></Box>
     
-    <Box sx={{position:'fixed',left:0,bottom:0,width:'100vw'}}>
+    <Box ref={heightRef} sx={{position:'fixed',left:0,bottom:0,width:'100vw'}}>
     
     {firstPath == 'read' && <ChapterNavigationBar/>}
     <NavigationBar/>

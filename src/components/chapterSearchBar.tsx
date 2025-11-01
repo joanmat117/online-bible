@@ -20,7 +20,10 @@ export function ChapterSearchBar(){
     const inputValue = (e.target as HTMLInputElement).value
     if(!inputValue) return showError('Campo vacio')
     const [book,chapter] = inputValue.split(' ')
-    const chapterNumb = Number(chapter)
+    const chapterWithoutVerse = chapter.includes(':')?
+      chapter.split(':')[0]:
+      chapter
+    const chapterNumb = Number(chapterWithoutVerse)
     const bookValidated = getBookByQuery(book)
     if(!bookValidated) return showError('Libro no encontrado')
     const chapterValidated = chapterNumb <= bookValidated.numberOfChapters && chapterNumb > 0? chapterNumb : 1

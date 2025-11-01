@@ -21,7 +21,7 @@ export function ConfigLayout(){
       toggleTheme()
     }}
     sx={{
-      backgroundColor:mode == 'dark'? 'primary.dark':undefined,
+      backgroundColor:mode == 'dark'? 'primary.main':undefined,
     }}
     >
     </ButtonConfig>

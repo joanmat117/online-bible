@@ -47,9 +47,9 @@ export const ChapterRender = () => {
       </Stack>
     {
       isLoading && !data && <Stack direction='column' sx={{height:'100vh',width:'100%',display:'flex',alignItems:'center',gap:3}} >
-      <Skeleton variant='rounded' height='200px' width={'100%'} />
-      <Skeleton variant='rounded' height='200px' width={'100%'} />
-      <Skeleton variant='rounded' height='200px' width={'100%'} />
+      <Skeleton variant='rounded' height='150px' width={'100%'} />
+      <Skeleton variant='rounded' height='150px' width={'100%'} />
+      <Skeleton variant='rounded' height='150px' width={'100%'} />
       </Stack>
     } 
     {
