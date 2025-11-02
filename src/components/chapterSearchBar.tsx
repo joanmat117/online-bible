@@ -17,22 +17,10 @@ export function ChapterSearchBar(){
       setError('')
     }, 4000);
   }
-<<<<<<< HEAD
-  function handleEnterPress(e:KeyboardEvent<HTMLDivElement>){
-    if(e.key !== "Enter" || !e.target) return
-    const inputValue = (e.target as HTMLInputElement).value
-    if(!inputValue) return showError('Campo vacio')
-    const [book,chapter] = inputValue.split(' ')
-    const chapterWithoutVerse = chapter.includes(':')?
-      chapter.split(':')[0]:
-      chapter
-    const chapterNumb = Number(chapterWithoutVerse)
-=======
   function validateAndSearch(value:string){ 
     if(!value) return showError('Campo vacio')
     const [book,chapter] = value.split(' ')
     const chapterNumb = Number(chapter)
->>>>>>> cfeae64 (buttonSearch of searchBar now is clickable)
     const bookValidated = getBookByQuery(book)
     if(!bookValidated) return showError('Libro no encontrado')
     const chapterValidated = chapterNumb <= bookValidated.numberOfChapters && chapterNumb > 0? chapterNumb : 1
