@@ -1,13 +1,15 @@
 "use client"
-import { Icon,Autocomplete,Stack,Paper,TextField, Typography } from "@mui/material";
+import { Icon,Autocomplete,Stack,Paper,TextField, Typography, IconButton } from "@mui/material";
 import { KeyboardEvent,useState } from "react";
 import { Search } from "lucide-react";
 import chaptersArray from '@/data/chaptersArray.json'
 import { getBookByQuery } from "@/utils/books-utilities";
 import { useRouter} from 'next/navigation'
+import {useRef} from 'react'
 
 export function ChapterSearchBar(){
   const router  = useRouter()
+  const inputRef = useRef<HTMLInputElement>(null)
   const [error,setError] = useState<string>('')
   function showError(error:string){
     setError(error)
@@ -15,6 +17,7 @@ export function ChapterSearchBar(){
       setError('')
     }, 4000);
   }
+<<<<<<< HEAD
   function handleEnterPress(e:KeyboardEvent<HTMLDivElement>){
     if(e.key !== "Enter" || !e.target) return
     const inputValue = (e.target as HTMLInputElement).value
@@ -24,10 +27,26 @@ export function ChapterSearchBar(){
       chapter.split(':')[0]:
       chapter
     const chapterNumb = Number(chapterWithoutVerse)
+=======
+  function validateAndSearch(value:string){ 
+    if(!value) return showError('Campo vacio')
+    const [book,chapter] = value.split(' ')
+    const chapterNumb = Number(chapter)
+>>>>>>> cfeae64 (buttonSearch of searchBar now is clickable)
     const bookValidated = getBookByQuery(book)
     if(!bookValidated) return showError('Libro no encontrado')
     const chapterValidated = chapterNumb <= bookValidated.numberOfChapters && chapterNumb > 0? chapterNumb : 1
     router.push(`/read?book=${bookValidated.title}&chapter=${chapterValidated}`)
+
+  }
+  function handleEnterPress(e:KeyboardEvent<HTMLDivElement>){
+    if(e.key !== "Enter" || !e.target) return
+    const inputValue = (e.target as HTMLInputElement).value
+    validateAndSearch(inputValue)
+  }
+  function handleButtonPress(){
+    if(!inputRef.current) return
+    validateAndSearch(inputRef.current.value)
   }
 
   return <Stack direction='column' sx={{
@@ -58,6 +77,7 @@ export function ChapterSearchBar(){
         }}
       renderInput={(params)=>(
         <TextField
+        inputRef={inputRef}
         placeholder="Romanos 12"
           onKeyDown={handleEnterPress}
         sx={{
@@ -78,9 +98,9 @@ export function ChapterSearchBar(){
       />
     )}
     />
-    <Icon sx={{width:40,height:'100%',display:'flex',alignItems:'center',justifyContent:'center',color:'text.secondary'}} >
+    <IconButton onClick={handleButtonPress} sx={{width:40,height:'100%',display:'flex',alignItems:'center',justifyContent:'center',color:'text.secondary'}} >
       <Search/>
-    </Icon>
+    </IconButton>
   </Paper>
   <Typography sx={{pt:1,opacity:error?1:0,transition:400}} variant="caption" color='error' textAlign={'center'}>
         {error || 'nada'}
