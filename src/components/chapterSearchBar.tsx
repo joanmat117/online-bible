@@ -19,7 +19,8 @@ export function ChapterSearchBar(){
   }
   function validateAndSearch(value:string){ 
     if(!value) return showError('Campo vacio')
-    const [book,chapter] = value.split(' ')
+    const [book,route] = value.split(' ')
+    const [chapter] = route.split(':')
     const chapterNumb = Number(chapter)
     const bookValidated = getBookByQuery(book)
     if(!bookValidated) return showError('Libro no encontrado')
@@ -38,7 +39,7 @@ export function ChapterSearchBar(){
   }
 
   return <Stack direction='column' sx={{
-    mb:6,
+    mb:4,
   }}>
     <Paper elevation={1} variant="outlined" sx={{
     borderRadius:'100px',
@@ -59,7 +60,8 @@ export function ChapterSearchBar(){
           paper:{
             variant:'outlined',
             sx:{
-              borderRadius:'20px'
+              borderRadius:'20px',
+              border:'none'
             }
           }
         }}

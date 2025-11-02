@@ -11,23 +11,30 @@ export function useChapter(){
   const fetchCurrentChapter = useBibleStore(state=>state.fetchCurrentChapter)
   const currentChapter = useBibleStore(state=>state.currentChapter)
 
-  const fetchChapter = async()=>{
+  const fetchChapter = async(fetchOptions?:RequestInit)=>{
       try{
         setError(null)
         setIsLoading(true)
-        const data = await fetchCurrentChapter()
+        const data = await fetchCurrentChapter(fetchOptions)
         setData(data)
       } catch(e){
+        if ((e as Error)?.name !== 'AbortError'){
         console.log('Error while fetching chapter ',e)
         setError(e as Error)
+      }
       } finally {
         setIsLoading(false)
       }
     }
 
   useEffect(()=>{
-    
-    fetchChapter()
+    const abortController = new AbortController() 
+    fetchChapter({
+      signal:abortController.signal
+    })
+  
+    return ()=>abortController.abort()
+
   },[currentChapter])
   return {
     data,

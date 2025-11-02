@@ -12,7 +12,7 @@ interface BibleStore {
     bookId:string,
     chapter:number
   })=>void,
-  fetchCurrentChapter: ()=>Promise<BibleChapterResponse>,
+  fetchCurrentChapter: (fetchOptions?:RequestInit)=>Promise<BibleChapterResponse>,
   changeToNextChapter: ()=>void,
   changeToPrevChapter: ()=>void
 }
@@ -37,13 +37,14 @@ export const useBibleStore = create<BibleStore>((set,get)=>{
         }
       })
     },
-    fetchCurrentChapter:async()=>{
+    fetchCurrentChapter:async(fetchOptions)=>{
       
         const {currentChapter} = get()
 
         const data = await fetchBibleChapter({
           bookId:currentChapter.bookId,
-          chapter:currentChapter.chapter
+          chapter:currentChapter.chapter,
+          fetchOptions
         })
 
         return data

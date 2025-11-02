@@ -2,27 +2,22 @@
 import { useRandomVerse } from "@/hooks/useRandomVerse";
 import { useBibleStore } from "@/zustand/useBibleStore";
 import { Typography,Stack,IconButton} from "@mui/material";
-import { useRouter } from "next/navigation";
 import { SolarCheckCircleLinear, SolarCloseCircleLinear, SolarCopyLinear, SolarRefreshCircleLinear, SolarRoundAltArrowRightBroken } from "./icons";
 import versesColor from '@/data/versesColor.json'
-import { useEffect, useRef } from "react";
+import { useMemo } from "react";
 import { useTheme } from "@/components/themeContext";
 import Link from 'next/link'
-
-function getRandomColor(){
-  return versesColor[Math.floor(Math.random()*versesColor.length)]
-}
 
 export function RandomVerseCard(){
   const {mode} = useTheme()
   const {copyState,verseRoute,copyToClipboard,reloadRandomVerse,randomVerse} = useRandomVerse()
   const changeChapter = useBibleStore(store=>store.changeChapter)
-  const router = useRouter()
-  const color = useRef(getRandomColor())
 
-  const textColor = mode == 'light'? color.current.foregroundDark : color.current.foregroundLight
+  const color = useMemo(()=>versesColor[Math.floor(randomVerse ? randomVerse.chapter%versesColor.length:0)],[randomVerse])
+  
 
-  useEffect(()=>{color.current = getRandomColor()},[randomVerse])
+  const textColor = mode == 'light'? color.foregroundDark : color.foregroundLight
+
 
   if(!randomVerse) return
 
@@ -31,14 +26,13 @@ export function RandomVerseCard(){
     px:2,
     py:1,
     m:2,
-    border:1,
-    color:textColor,
-    backgroundColor:color.current.background,
+    color:'primary.contrastText',
+    backgroundColor:'primary.main',
   }}>
   <Stack direction={'row'} sx={{justifyContent:'space-between',alignItems:'center'}}>
-    <Typography sx={{fontFamily:'"Lato"',fontWeight:600}} color="textSecondary" variant='body1'>{verseRoute}</Typography>
+    <Typography sx={{fontFamily:'"Lato"',fontWeight:600,opacity:0.8}} color="primary.contrastText" variant='body1'>{verseRoute}</Typography>
       <Link href='/read'>
-        <IconButton sx={{color:textColor}} onClick={()=>{
+        <IconButton sx={{color:'primary.contrastText'}} onClick={()=>{
           changeChapter({bookId:randomVerse.bookId,chapter:randomVerse.chapter})
         }}>
           <SolarRoundAltArrowRightBroken/>
@@ -49,10 +43,10 @@ export function RandomVerseCard(){
     {randomVerse.text}
   </Typography>
   <Stack direction='row' sx={{justifyContent:'space-between'}}>
-    <IconButton sx={{color:textColor}} onClick={()=>reloadRandomVerse()}>
+    <IconButton sx={{color:'primary.contrastText'}} onClick={()=>reloadRandomVerse()}>
      <SolarRefreshCircleLinear/>
     </IconButton>
-    <IconButton sx={{color:textColor}} onClick={()=>copyToClipboard()}>
+    <IconButton sx={{color:'primary.contrastText'}} onClick={()=>copyToClipboard()}>
       {copyState === 0 && <SolarCopyLinear/>}
       {copyState === 1 && <SolarCheckCircleLinear/>}
       {copyState === -1 && <SolarCloseCircleLinear/>}

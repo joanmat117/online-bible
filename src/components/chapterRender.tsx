@@ -72,7 +72,7 @@ export const ChapterRender = () => {
             color.foregroundDark
 
           return (
-          <Box sx={{
+          <Box id={verse.number?`${verse.number}`:undefined} sx={{
               borderRadius:'10px',
               position:'relative',
               border:'1px solid transparent',
