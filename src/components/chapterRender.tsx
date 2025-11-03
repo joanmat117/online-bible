@@ -58,7 +58,7 @@ export const ChapterRender = () => {
       <Typography variant='h6'>
          Error, compruebe su conexion a Internet
       </Typography>
-      <Button onClick={reloadChapter} sx={{textTransform:'capitalize',color:'text.primary',borderColor:'error.main'}} variant='outlined'>
+      <Button onClick={()=>reloadChapter} sx={{textTransform:'capitalize',color:'text.primary',borderColor:'error.main'}} variant='outlined'>
       Reintentar
       </Button>
       </Box>
