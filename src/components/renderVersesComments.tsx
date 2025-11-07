@@ -1,27 +1,27 @@
 "use client"
 import { IconButton, Stack } from '@mui/material'
-import { useSavedVerses } from "@/hooks/useSavedVerses"
 import { getBookById } from "@/utils/books-utilities"
 import {Box,Typography} from '@mui/material'
 import { useMemo } from "react"
 import { X } from 'lucide-react'
 import versesColor from '@/data/versesColor.json'
 import {useTheme} from '@/components/themeContext'
-import { removeSavedVerseFromDB} from '@/services/savedVersesApi'
 import { SolarBookmarkOpenedLinear } from './icons'
+import { useVersesCommentsVerses } from '@/hooks/useVersesComments'
+import { removeVerseCommentFromDB } from '@/services/versesCommentsApi'
 
-export function RenderSavedVerses(){
-  const savedVerses = useSavedVerses()
+export function RenderVersesComments(){
+  const versesComments = useVersesCommentsVerses()
   const {mode} = useTheme()
-  const savedVersesWithBookTitle = useMemo(()=>{
-    if(!savedVerses) return
-    return savedVerses.map(verse=>{
+  const versesCommentsWithBookTitle = useMemo(()=>{
+    if(!versesComments) return
+    return versesComments.map(verse=>{
       const bookTitle = getBookById(verse.bookId.toString())?.title
       return {...verse,bookTitle}
     }) 
-  },[savedVerses])
+  },[versesComments])
   return <>
-    {savedVerses == undefined || savedVerses.length == 0 &&
+    {versesComments == undefined || versesComments.length == 0 &&
     <Box sx={{
         display:'flex',
         flexDirection:'column',
@@ -33,13 +33,13 @@ export function RenderSavedVerses(){
       }}>
         <SolarBookmarkOpenedLinear style={{width:54,height:54}}/>
       <Typography variant='h6' fontWeight={600}>
-        No hay versiculos guardados
+        No hay comentarios guardados
       </Typography>
     </Box>
     }
-    { savedVersesWithBookTitle &&
+    { versesCommentsWithBookTitle&&
       <Stack px={1} py={2} gap={2}>
-      {savedVersesWithBookTitle.map((verse)=>{
+      {versesCommentsWithBookTitle.map((verse)=>{
         const color = versesColor[verse.id % versesColor.length]
         const foregroundColor = mode == 'dark'? 
           color.foregroundLight:
@@ -62,12 +62,15 @@ export function RenderSavedVerses(){
             {verse.bookTitle + ' ' + verse.chapter + ':' + verse.number}
           </Typography>
           
-          <IconButton onClick={()=>removeSavedVerseFromDB(verse.id)} sx={{color:foregroundColor}}>
+          <IconButton onClick={()=>removeVerseCommentFromDB(verse.id)} sx={{color:foregroundColor}}>
             <X/>
           </IconButton>
         </Stack>
-              <Typography p={1.4} sx={{display:'inline',lineHeight:1.4,fontSize:20,fontFamily:'"Crimson Pro"'}} variant='body1' fontWeight={ 400}>
+              <Typography p={1.6} sx={{display:'inline',lineHeight:1.3,fontSize:17,fontFamily:'"Crimson Pro"'}} variant='body1' fontWeight={ 400}>
               {verse.content}
+              </Typography>
+              <Typography p={1.4} sx={{display:'inline',lineHeight:1.4,fontSize:20,fontFamily:'"Crimson Pro"'}} variant='body1' fontWeight={ 400}>
+              {verse.comment}
               </Typography>
         </Box>
       )})}

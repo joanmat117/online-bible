@@ -1,20 +1,19 @@
 "use client"
 import {Box} from '@mui/material'
-import {ButtonConfig} from '@/components/buttonConfig'
-import { SolarMoonBold, SolarNotebookBookmarkBold } from './icons'
+import { SolarChatLineLinear, SolarMoonBold, SolarNotebookBookmarkBold } from './icons'
 import {useTheme} from '@/components/themeContext'
 import {useRouter} from 'next/navigation'
+import { SettingsGridButton } from './settingsGridButton'
 
-export function ConfigLayout(){
+export function SettingsGrid(){
   const {toggleTheme,mode} = useTheme()
-  const router = useRouter()
   return <Box sx={{
     display:'flex',
     flexWrap:'wrap',
     gap:2,
     p:2
   }}>
-    <ButtonConfig
+    <SettingsGridButton
     icon={<SolarMoonBold/>}
     label='Modo Oscuro'
     onClick={()=>{
@@ -24,15 +23,18 @@ export function ConfigLayout(){
       backgroundColor:mode == 'dark'? 'primary.main':undefined,
     }}
     >
-    </ButtonConfig>
-    <ButtonConfig
+    </SettingsGridButton>
+    <SettingsGridButton
     icon={<SolarNotebookBookmarkBold/>}
     label='Versiculos Guardados'
-    onClick={()=>{
-      router.push('/saved')
-    }}
-    >
-    </ButtonConfig>
+    href='/saved'    
+    />
+    <SettingsGridButton
+    href='/comments'
+    label='Comentarios'
+    icon={<SolarChatLineLinear/>}
+    />
+    
 
   </Box>
 }

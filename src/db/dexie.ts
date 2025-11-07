@@ -8,12 +8,23 @@ interface SavedVersesTable {
   number:number
 }
 
+interface VersesCommentTable {
+  id:number,
+  content:string,
+  comment:string,
+  bookId:string,
+  chapter:number,
+  number:number
+}
+
 const db = new Dexie('bibleDatabase') as Dexie & {
-  savedVerses:EntityTable<SavedVersesTable,'id'>
+  savedVerses:EntityTable<SavedVersesTable,'id'>,
+  versesComments:EntityTable<VersesCommentTable,'id'>
 }
 
 db.version(1).stores({
-  savedVerses: '++id, text, bookId,chapter,number'  
+  savedVerses: '++id, content, bookId,chapter,number',
+  versesComments: '++id,content,comment,bookId,chapter,number' 
 });
 
-export {db,type SavedVersesTable}
+export {db,type SavedVersesTable,type VersesCommentTable}

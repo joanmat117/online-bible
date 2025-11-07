@@ -1,8 +1,7 @@
-import {ConfigLayout} from '@/components/configLayout'
+import { SettingsGrid } from "@/components/settingsGrid";
 
 export default function Settings(){
   return <>
-  <ConfigLayout/>
-  
+    <SettingsGrid/>  
   </>
 }

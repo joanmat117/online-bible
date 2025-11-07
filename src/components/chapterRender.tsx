@@ -2,16 +2,18 @@
 import {useChapter} from '@/hooks/useChapter'
 import { getBookById } from '@/utils/books-utilities';
 import { useFetchChapterByParams } from '@/hooks/useFetchChapterByParams';
-import { Typography,Fade,Skeleton, Box, Stack, Button, Dialog, DialogContent} from '@mui/material'
-import { ReactNode, useEffect,useMemo,useState } from 'react';
+import { Typography,Fade,Skeleton, Box, Stack, Button, Dialog, DialogContent, TextField} from '@mui/material'
+import { ChangeEvent, ReactNode, useEffect,useMemo,useState } from 'react';
 import { WifiOff } from 'lucide-react';
 import { SolarBookmarkBold, SolarBookmarkLinear, SolarCheckCircleLinear, SolarCloseCircleLinear, SolarCopyLinear} from './icons';
 import { useCopyText } from '@/hooks/useCopyText';
 import { useSavedVerses } from '@/hooks/useSavedVerses';
-import { deleteVerseInDB, saveVerseInDB } from '@/services/dexie-api';
+import { addSavedVerseToDB,removeSavedVerseFromDB} from '@/services/savedVersesApi';
 import {renderVerseContent} from '@/utils/renderVerseContent'
 import versesColor from '@/data/versesColor.json'
 import { useTheme} from '@/components/themeContext'
+import { addVerseCommentToDB, updateVerseCommentFromDB } from '@/services/versesCommentsApi';
+import { useVersesCommentsVerses } from '@/hooks/useVersesComments';
 
 interface Verse {
     type: string;
@@ -75,6 +77,7 @@ export const ChapterRender = () => {
           <Box id={verse.number?`${verse.number}`:undefined} sx={{
               borderRadius:'10px',
               position:'relative',
+              cursor:'pointer',
               border:'1px solid transparent',
               p:1
             }} key={index}  onClick={()=>verse.number && setSelectedVerse(verse)}
@@ -114,18 +117,41 @@ function SelectVerseDialog({selectedVerse,bookId,bookTitle,chapterNumber,setSele
 
   const {copyText,copyState} = useCopyText()
   const chapterSavedVerses = useSavedVerses({bookId,chapter:chapterNumber})
+  const chapterVersesComments = useVersesCommentsVerses({bookId,chapter:chapterNumber})
   const currentSavedVerse = useMemo(()=>{
     if(!selectedVerse) return undefined
     return chapterSavedVerses?.find((verse)=>verse.number==selectedVerse.number)
   },[selectedVerse,chapterSavedVerses])
-  
+   
+  const currentVerseComment = useMemo(()=>{
+    if(!selectedVerse) return undefined
+    return chapterVersesComments?.find((verse)=>verse.number==selectedVerse.number)
+  },[selectedVerse,chapterVersesComments]) 
+
+  const onEditComment = (e:ChangeEvent<HTMLInputElement | HTMLTextAreaElement>)=>{
+    if(!selectedVerse || !selectedVerse.number) return
+    if(currentVerseComment){
+      updateVerseCommentFromDB({
+        id:currentVerseComment.id,
+        comment:String(e.target.value)
+      })
+    } else {
+      addVerseCommentToDB({
+        comment:String(e.target.value),
+        number:selectedVerse.number,
+        content:renderVerseContent(selectedVerse.content),
+        bookId,
+        chapter:chapterNumber
+      })
+    }
+  }
 
   const toggleSave = ()=>{
     if(!selectedVerse || !selectedVerse.number) return
     if(currentSavedVerse){
-      deleteVerseInDB(currentSavedVerse.id)
+      removeSavedVerseFromDB(currentSavedVerse.id)
     } else {
-      saveVerseInDB({
+      addSavedVerseToDB({
         number:selectedVerse.number,
         bookId,
         chapter:chapterNumber,
@@ -164,6 +190,20 @@ function SelectVerseDialog({selectedVerse,bookId,bookTitle,chapterNumber,setSele
             <SolarBookmarkLinear/>
             }  
           </DialogButton>
+        </Box>
+        <Box sx={{py:2}}>
+         <TextField
+            variant='outlined'
+            placeholder='Tu commentario'
+            multiline
+            onChange={onEditComment}
+            label='Comentario'
+            size='small'
+            margin='dense'
+            type='text'
+            fullWidth
+            defaultValue={currentVerseComment && currentVerseComment.comment}
+          />
         </Box>
         </>}
       </DialogContent>
