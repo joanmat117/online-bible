@@ -14,6 +14,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
+      <head>
+        <meta name="apple-mobile-web-app-title" content="Online Bible" />
+      </head>
       <body
 style={{fontFamily:'"Lato"',minHeight:'100dvh',display:'flex',flexDirection:'column'}}  
       >
