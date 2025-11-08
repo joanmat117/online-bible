@@ -40,6 +40,7 @@ export function RenderVersesComments(){
     { versesCommentsWithBookTitle&&
       <Stack px={1} py={2} gap={2}>
       {versesCommentsWithBookTitle.map((verse)=>{
+        if(!verse.comment) return
         const color = versesColor[verse.id % versesColor.length]
         const foregroundColor = mode == 'dark'? 
           color.foregroundLight:
@@ -66,10 +67,10 @@ export function RenderVersesComments(){
             <X/>
           </IconButton>
         </Stack>
-              <Typography p={1.6} sx={{display:'inline',lineHeight:1.3,fontSize:17,fontFamily:'"Crimson Pro"'}} variant='body1' fontWeight={ 400}>
+              <Typography p={1.3} color='textSecondary' sx={{display:'inline',backgroundColor:'background.default',lineHeight:1.3,fontSize:17,fontFamily:'"Crimson Pro"'}} variant='body1' fontWeight={ 400}>
               {verse.content}
               </Typography>
-              <Typography p={1.4} sx={{display:'inline',lineHeight:1.4,fontSize:20,fontFamily:'"Crimson Pro"'}} variant='body1' fontWeight={ 400}>
+              <Typography p={1.4} sx={{display:'inline',whiteSpace:'pre-wrap',lineHeight:1.4,fontSize:18}} variant='body1' fontWeight={ 400}>
               {verse.comment}
               </Typography>
         </Box>

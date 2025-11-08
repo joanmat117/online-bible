@@ -82,7 +82,7 @@ export const ChapterRender = () => {
               p:1
             }} key={index}  onClick={()=>verse.number && setSelectedVerse(verse)}
             >
-            <Typography sx={{display:'inline',lineHeight:1.4,fontSize:20,fontFamily:'"Crimson Pro"'}} variant='body1' fontWeight={verse.type == 'heading'? 700 : 400}>
+            <Typography sx={{display:'inline',whiteSpace:'pre-wrap',lineHeight:1.4,fontSize:20,fontFamily:'"Crimson Pro"'}} variant='body1' fontWeight={verse.type == 'heading'? 700 : 400}>
             {verse.number && 
               <Typography sx={{
                 backgroundColor:color.background,

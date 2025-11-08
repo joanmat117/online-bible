@@ -31,6 +31,7 @@ export function SettingsGridButton({href,label,children,icon,onClick,sx}:Props){
 
   return <Paper onClick={onClick} variant='outlined' sx={{
     flex:1,
+    minWidth:'140px',
     borderRadius:'14px',
     overflow:'hidden',
     ...sx
