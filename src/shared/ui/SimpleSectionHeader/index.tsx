@@ -1,5 +1,5 @@
 import {Box, IconButton, Typography} from '@mui/material'
-import { SolarAltArrowLeftBold } from '@/shared/ui/Icons/Icons'
+import { SolarAltArrowLeftBold } from '@/shared/ui/Icons'
 import Link from 'next/link' 
 
 export function SimpleSectionHeader({title,backTo}:{title:string,backTo:string}){

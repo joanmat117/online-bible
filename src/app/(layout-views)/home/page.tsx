@@ -9,7 +9,6 @@ export default function Home() {
     <Typography color={'primary'} variant="h1" component={'h1'} textAlign={'center'} sx={{
       fontFamily:'"Funnel Display"',
       fontWeight:800,
-      textShadow:`0 0 7px`,
       py:4,
       fontSize: {
         xs: 50,
