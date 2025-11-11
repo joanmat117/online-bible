@@ -1,7 +1,7 @@
-import { SettingsGrid } from "@/components/settingsGrid";
+import { SettingsAndSections } from "@/features/SettingsAndSections"
 
 export default function Settings(){
   return <>
-    <SettingsGrid/>  
+    <SettingsAndSections/>  
   </>
 }

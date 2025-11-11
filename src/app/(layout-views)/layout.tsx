@@ -1,8 +1,9 @@
-import { BottomBarWrapper } from "@/components/bottomBarWrapper";
 import { Box } from "@mui/material";
 import { ReactNode } from "react";
+import { BottomBarSpacer } from "@/shared/ui/BottomBarSpacer";
+import NavigationBar from "@/features/NavigationBar";
 
-export default function Roout({
+export default function LayoutViews({
   children,
 }: Readonly<{
   children: ReactNode
@@ -20,6 +21,9 @@ export default function Roout({
   >
     {children}
   </Box>
-  <BottomBarWrapper/>
+  <BottomBarSpacer>
+    
+    <NavigationBar/>
+  </BottomBarSpacer>
  </> 
 }

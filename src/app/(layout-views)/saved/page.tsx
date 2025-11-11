@@ -1,10 +1,10 @@
-import { RenderSavedVerses } from "@/components/renderSavedVerses";
-import { SecondarySectionHeader } from "@/components/secondarySectionHeader";
+import { SimpleSectionHeader } from "@/shared/ui/SimpleSectionHeader"
+import { SavedVerses } from "@/features/SavedVerses"
 
 export default function Page(){
 
   return <>
-  <SecondarySectionHeader backTo='/settings' title="Versiculos Guardados" />
-  <RenderSavedVerses/>
+  <SimpleSectionHeader backTo='/settings' title="Versiculos Guardados" />
+  <SavedVerses/>
   </>
 }

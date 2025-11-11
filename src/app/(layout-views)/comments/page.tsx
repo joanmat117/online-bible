@@ -1,10 +1,10 @@
-import { RenderVersesComments } from "@/components/renderVersesComments";
-import { SecondarySectionHeader } from "@/components/secondarySectionHeader";
+import { VerseCommentaries } from "@/features/VerseCommentaries";
+import { SimpleSectionHeader } from "@/shared/ui/SimpleSectionHeader";
 
 export default function Page(){
 
   return <>
-  <SecondarySectionHeader backTo='/settings' title="Comentarios" />
-  <RenderVersesComments/>
+  <SimpleSectionHeader backTo='/settings' title="Comentarios" />
+  <VerseCommentaries/>
   </>
 }
