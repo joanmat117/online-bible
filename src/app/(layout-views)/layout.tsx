@@ -2,6 +2,7 @@ import { Box } from "@mui/material";
 import { ReactNode } from "react";
 import { BottomBarSpacer } from "@/shared/ui/BottomBarSpacer";
 import NavigationBar from "@/features/NavigationBar";
+import { ChapterNavigationBar } from "@/features/ChapterNavigationBar";
 
 export default function LayoutViews({
   children,
@@ -22,7 +23,7 @@ export default function LayoutViews({
     {children}
   </Box>
   <BottomBarSpacer>
-    
+    <ChapterNavigationBar/>
     <NavigationBar/>
   </BottomBarSpacer>
  </> 

@@ -88,7 +88,7 @@ export function ChapterSearchBar(){
       />
     )}
     />
-    <IconButton onClick={handleButtonPress} sx={{width:40,height:'100%',display:'flex',alignItems:'center',justifyContent:'center',color:'text.secondary'}} >
+    <IconButton onClick={handleButtonPress} sx={{width:40,height:'100%',display:'flex',alignItems:'center',justifyContent:'center',color:'primary.main'}} >
       <Search/>
     </IconButton>
   </Paper>

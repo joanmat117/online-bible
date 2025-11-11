@@ -9,7 +9,7 @@ export function ChapterNavigationBar(){
   const pathname = usePathname()
   const changeToNextChapter = useBibleStore(state=>state.changeToNextChapter)
   const changeToPrevChapter = useBibleStore(state=>state.changeToPrevChapter)
-  if(pathname.split('/')[0] !== '/read') return 
+  if(pathname !== '/read') return 
 
     return <>
     <Stack direction={'row'} gap={2} sx={{

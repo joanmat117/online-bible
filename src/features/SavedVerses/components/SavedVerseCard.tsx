@@ -23,7 +23,9 @@ export function SavedVerseCard({verse}:Props){
           display:'flex',
           flexDirection:'column',
           backgroundColor:'background.paper',
-          borderRadius:'15px',
+          borderRadius:'10px',
+          border:'1px solid',
+          borderColor:'text.disabled',
           overflow:'hidden'
         }}>
         <Stack direction='row' sx={{

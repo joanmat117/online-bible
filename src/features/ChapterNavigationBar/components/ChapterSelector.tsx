@@ -4,12 +4,15 @@ import { Button,Fade,Box, AccordionSummary, Typography, AccordionDetails, Accord
 import { useState, useMemo} from "react"
 import books from '@/shared/data/books.json'
 import { SolarAltArrowLeftBold } from "@/shared/ui/Icons"
+import { BookAccordion } from "./BookAccordion"
 
 
 export function ChapterSelector(){
   const [isOpen,setIsOpen] = useState(false)
   const currentChapter = useBibleStore(state=>state.currentChapter)
   const changeChapter = useBibleStore(state=>state.changeChapter)
+
+  
   
   const currentBook = useMemo(()=>{
     return getBookById(currentChapter.bookId)?.title
@@ -40,37 +43,7 @@ export function ChapterSelector(){
       <SolarAltArrowLeftBold/>
     </IconButton>    
         {
-          books.map((book,index)=>(
-            <Accordion elevation={0} disableGutters key={index} sx={{
-              backgroundColor:(t)=>t.palette.background.default,
-              width:'100%',
-              '&.Mui-expanded':{
-                margin:0,
-              }
-
-            }}>
-              <AccordionSummary onClick={(e)=>e.stopPropagation()}> 
-                <Typography>
-                {book.title}
-                </Typography>
-              </AccordionSummary>
-              <AccordionDetails > 
-              <Box sx={{display:'flex',flexWrap:'wrap',gap:1}}>
-                {Array.from({length:book.numberOfChapters},(_,i)=>(
-                  <Button onClick={()=>changeChapter({bookId:book.id,chapter:i+1})} key={i} color="inherit" size='medium' variant='text' sx={{
-                    flex:1,
-                    border:'1px solid',
-                    borderColor:(t)=>t.palette.text.disabled,
-                    paddingY:1,
-                    backgroundColor:'background.paper'
-                  }} >
-                  {i+1} 
-                  </Button>
-                ))}
-              </Box>
-              </AccordionDetails>
-            </Accordion>
-          ))
+          books.map((book,index)=><BookAccordion book={book} key={index} />)
         }
         </Stack>
       </Box>
