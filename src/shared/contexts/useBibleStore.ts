@@ -6,7 +6,8 @@ import {create} from 'zustand'
 interface BibleStore {
   currentChapter:{
     bookId:string,
-    chapter:number
+    chapter:number,
+    bookTitle:string
   },
   changeChapter:({bookId,chapter}:{
     bookId:string,
@@ -21,7 +22,8 @@ export const useBibleStore = create<BibleStore>((set,get)=>{
   return {
     currentChapter: {
       bookId:'GEN',
-      chapter:1
+      chapter:1,
+      bookTitle:'Genesis'
     },
     changeChapter:({bookId,chapter})=>{
       
@@ -33,7 +35,8 @@ export const useBibleStore = create<BibleStore>((set,get)=>{
       set({
         currentChapter:{
           bookId,
-          chapter
+          chapter,
+          bookTitle:book.title
         }
       })
     },

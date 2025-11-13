@@ -1,7 +1,7 @@
 "use client"
 import {useChapter} from './hooks/useChapter'
 import { getBookById } from '@/shared/utils/booksUtilities';
-import { useFetchChapterByParams } from './hooks/useFetchChapterByParams';
+import { useManageUrl } from './hooks/useManageUrl';
 import { Typography,Fade,Skeleton, Box, Stack, Button} from '@mui/material'
 import { useEffect,useState } from 'react';
 import { WifiOff } from 'lucide-react';
@@ -11,8 +11,8 @@ import { VerseDialog } from './components/VerseDialog';
 
 export const ChapterReading = () => {
   
+  useManageUrl()
   const [selectedVerse,setSelectedVerse] = useState<BibleVerse|null>(null)
-  useFetchChapterByParams()
   const {currentChapter,data,error,isLoading,reloadChapter} = useChapter()
   const verses = data?.chapter.content
   const bookId = currentChapter.bookId

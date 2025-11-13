@@ -1,16 +1,15 @@
 import { useBibleStore } from "@/shared/contexts/useBibleStore";
 import {useEffect} from 'react'
 import { getBookByQuery } from "@/shared/utils/booksUtilities";
-import { useSearchParams } from "next/navigation"
+import { useSearchParams} from "next/navigation"
 
-export function useFetchChapterByParams(){
+export function useManageUrl(){
   
   const searchParams = useSearchParams()
   const changeChapter = useBibleStore(state=>state.changeChapter)
-  
+  const currentChapter = useBibleStore(state=>state.currentChapter)
 
-  useEffect(()=>{
-
+  const validateAndGoToChapter = ()=>{
     const chapterParam = Number(searchParams.get('chapter'))
     const bookParam = searchParams.get('book')
     
@@ -22,10 +21,16 @@ export function useFetchChapterByParams(){
     
     changeChapter({
       chapter:chapterParam,
-      bookId:book?.id
+      bookId:book?.id,
     })
+  }
 
+  const updateUrlToCurrentChapter = ()=>{
+    const newUrl = `/read?book=${currentChapter.bookTitle}&chapter=${currentChapter.chapter}`
+    window.history.pushState({ ...window.history.state, url: newUrl }, '', newUrl)
+  }
 
-  },[])
+  useEffect(validateAndGoToChapter,[])
+  useEffect(updateUrlToCurrentChapter,[currentChapter])
     
 }
