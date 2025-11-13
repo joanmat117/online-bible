@@ -1,9 +1,10 @@
 import { removeVerseCommentaryFromDB, updateVerseCommentaryFromDB } from '@/shared/services/verseCommentariesApi'
 import { X } from 'lucide-react'
 import { Fade, IconButton, Stack, TextField } from '@mui/material'
-import {Box,Typography} from '@mui/material'
+import {Box,Typography,Icon} from '@mui/material'
 import { useColor } from '@/shared/hooks/useColor'
 import { ChangeEvent } from 'react'
+import { SolarPen2Linear } from '@/shared/ui/Icons'
 
 interface Props {
   verse: {
@@ -36,7 +37,7 @@ export function VerseCommentaryCard({verse}:Props){
           borderRadius:'10px',
           overflow:'hidden',
           border:'1px solid',
-          borderColor:t=>t.palette.text.disabled
+          borderColor:color.background
         }}>
         <Stack direction='row' sx={{
           justifyContent:'space-between',
@@ -55,11 +56,13 @@ export function VerseCommentaryCard({verse}:Props){
               <Typography p={1.3} color='textSecondary' sx={{display:'inline',backgroundColor:'background.default',lineHeight:1.3,fontSize:17,fontFamily:'"Crimson Pro"'}} variant='body1' fontWeight={ 400}>
               {verse.content}
               </Typography>
+              <Box sx={{display:'flex',justifyContent:'space-between',alignItems:'center'}}>
               <TextField onChange={onEditComment} margin='none' size='small' multiline defaultValue={verse.comment} sx={{
                 whiteSpace:'pre-wrap',
                 padding:1,
                 fontSize:18,
                 width:'full',
+                flex:1,
                 "& .MuiInput-underline": {
                 "&:before": {
                   borderBottom: "none" // Quita la línea inferior normal
@@ -71,7 +74,9 @@ export function VerseCommentaryCard({verse}:Props){
                   borderBottom: "none" // Quita la línea inferior en hover
                 }
               }
-              }} variant='standard' type='text' /> 
+              }} variant='standard' type='text' />
+              <SolarPen2Linear style={{margin:3,opacity:0.5}}/>
+              </Box>
         </Box>
     </Stack>
   </Fade>

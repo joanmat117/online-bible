@@ -1,6 +1,6 @@
 "use client"
 import {Box} from '@mui/material'
-import { SolarChatLineLinear, SolarMoonBold, SolarNotebookBookmarkBold } from '@/shared/ui/Icons'
+import { SolarChatLineBold, SolarChatLineLinear, SolarMoonBold, SolarNotebookBookmarkBold } from '@/shared/ui/Icons'
 import {useMuiTheme} from '@/shared/contexts/MuiThemeContext'
 import { SettingAndSectionButton} from './components/SettingAndSectionButton'
 
@@ -31,7 +31,7 @@ export function SettingsAndSections(){
     <SettingAndSectionButton
     href='/comments'
     label='Comentarios'
-    icon={<SolarChatLineLinear/>}
+    icon={<SolarChatLineBold/>}
     />
     
 

@@ -1,4 +1,3 @@
-import { getBookById } from "@/shared/utils/booksUtilities"
 import { useBibleStore } from "@/shared/contexts/useBibleStore"
 import { Button,Fade,Box, Stack, IconButton } from "@mui/material"
 import { useState, useMemo, useRef} from "react"

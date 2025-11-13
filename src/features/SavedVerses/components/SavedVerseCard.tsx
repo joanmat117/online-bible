@@ -25,7 +25,7 @@ export function SavedVerseCard({verse}:Props){
           backgroundColor:'background.paper',
           borderRadius:'10px',
           border:'1px solid',
-          borderColor:'text.disabled',
+          borderColor:color.background,
           overflow:'hidden'
         }}>
         <Stack direction='row' sx={{
