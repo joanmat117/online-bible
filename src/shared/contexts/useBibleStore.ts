@@ -1,3 +1,4 @@
+"use client"
 import { fetchBibleChapter } from '@/shared/services/bibleApi'
 import { BibleChapterResponse } from '@/shared/types/BibleChapterResponse'
 import { getBookById, getNextChapter,getPrevChapter } from '@/shared/utils/booksUtilities'
@@ -17,6 +18,8 @@ interface BibleStore {
   changeToNextChapter: ()=>void,
   changeToPrevChapter: ()=>void
 }
+
+export type CurrentChapter = BibleStore['currentChapter']
 
 export const useBibleStore = create<BibleStore>((set,get)=>{
   return {
