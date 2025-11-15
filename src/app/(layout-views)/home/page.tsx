@@ -1,4 +1,5 @@
 import { ChapterSearchBar } from "@/features/ChapterSearchBar";
+import { ContinueReadingCard } from "@/features/ContinueReadingCard";
 import { RandomVerse } from "@/features/RandomVerse";
 import {Box, Typography} from '@mui/material'
 export default function Home() {
@@ -19,5 +20,6 @@ export default function Home() {
     </Typography>
     <ChapterSearchBar/>
     <RandomVerse/>
+    <ContinueReadingCard/>
   </Box>;
 }
