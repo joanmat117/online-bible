@@ -10,6 +10,7 @@ export function SimpleSectionHeader({title,backTo}:{title:string,backTo:string})
       py:1.5,
       position:'sticky',
       top:0,
+      zIndex:20,
       backgroundColor:'background.default',
       justifyContent:'center'
     }}>

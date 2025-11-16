@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Providers } from "@/shared/app/Providers";
+import { lato } from "@/shared/styles/fonts";
 
 export const metadata: Metadata = {
   title: "Biblia Online",
@@ -18,7 +19,13 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-title" content="Online Bible" />
       </head>
       <body
-style={{fontFamily:'"Lato"',minHeight:'100dvh',display:'flex',flexDirection:'column'}}  
+style={{
+  ...lato.style,
+  fontWeight:400,
+  minHeight:'100dvh',
+  display:'flex',
+  flexDirection:'column'
+}}  
       >
         <Providers>
           {children}

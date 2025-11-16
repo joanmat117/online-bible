@@ -3,6 +3,7 @@ import {Box,Typography} from '@mui/material'
 import {convertToTextApiVerseContent} from '@/shared/utils/convertToTextApiVerseContent'
 import { useColor } from "@/shared/hooks/useColor"
 import { Dispatch, SetStateAction } from "react"
+import { crimsonPro } from "@/shared/styles/fonts"
 
 interface Props {
   verse:BibleVerse,
@@ -21,7 +22,7 @@ export function ChapterReadingVerseCard({verse,setSelectedVerse}:Props){
               p:1
             }} onClick={()=>verse.number && setSelectedVerse(verse)}
             >
-            <Typography sx={{display:'inline',whiteSpace:'pre-wrap',lineHeight:1.4,fontSize:20,fontFamily:'"Crimson Pro"'}} variant='body1' fontWeight={verse.type == 'heading'? 700 : 400}>
+            <Typography sx={{display:'inline',whiteSpace:'pre-wrap',lineHeight:1.4,fontSize:20,...crimsonPro.style}} variant='body1' fontWeight={verse.type == 'heading'? 700 : 400}>
             {verse.number && 
               <Typography sx={{
                 backgroundColor:color.background,

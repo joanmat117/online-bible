@@ -8,6 +8,7 @@ import { convertToTextApiVerseContent } from "@/shared/utils/convertToTextApiVer
 import { addSavedVerseToDB, removeSavedVerseFromDB } from "@/shared/services/savedVersesApi"
 import { Dialog, DialogContent,Box, Typography, TextField, Button } from "@mui/material"
 import { SolarBookmarkBold, SolarBookmarkLinear, SolarCheckCircleLinear, SolarCloseCircleLinear, SolarCopyLinear } from "@/shared/ui/Icons"
+import { crimsonPro, lato } from "@/shared/styles/fonts"
 
 interface Props {
   selectedVerse:BibleVerse|null,
@@ -69,10 +70,10 @@ export function VerseDialog({selectedVerse,bookId,bookTitle,chapterNumber,setSel
         backgroundColor:'background.paper'
       }} >
         {selectedVerse !== null && <>
-        <Typography fontWeight={700} textAlign={'center'} variant='body1' sx={{fontFamily:'"Lato"'}}>
+        <Typography fontWeight={700} textAlign={'center'} variant='body1' sx={{...lato.style}}>
             {`${bookTitle} ${chapterNumber}:${selectedVerse.number}`}
         </Typography>
-        <Typography variant='body1' sx={{fontSize:19,fontFamily:'"crimson Pro"',my:2}}>
+        <Typography variant='body1' sx={{fontSize:19,...crimsonPro.style,my:2}}>
         {convertToTextApiVerseContent(selectedVerse.content)}
         </Typography>
         <Box sx={{

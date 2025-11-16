@@ -23,10 +23,10 @@ export function ContinueReadingCard(){
       flexDirection:'column',
       justifyContent:'space-between'
     }}>
-      <Typography variant='subtitle1' color='textSecondary'>
+      <Typography variant='subtitle2' color='textSecondary'>
         Continuar leyendo
       </Typography>
-      <Typography variant='h4' fontWeight={700} component='p'>
+      <Typography variant='h5' pt={1} fontWeight={700} component='p'>
         {`${storedChapter.bookTitle} ${storedChapter.chapter}`}
       </Typography>
     </Box>

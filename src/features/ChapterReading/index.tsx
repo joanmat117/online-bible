@@ -8,6 +8,7 @@ import { WifiOff } from 'lucide-react';
 import { BibleVerse } from './types/Verse';
 import { ChapterReadingVerseCard } from './components/ChapterReadingVerseCard';
 import { VerseDialog } from './components/VerseDialog';
+import { crimsonPro } from '@/shared/styles/fonts';
 
 export const ChapterReading = () => {
   
@@ -31,8 +32,8 @@ export const ChapterReading = () => {
     <VerseDialog chapterNumber={chapterNumber} bookTitle={bookTitle} selectedVerse={selectedVerse} bookId={bookId} setSelectedVerse={setSelectedVerse}/>
     <Box sx={{p:1,mb:3,flex:1,display:'flex',flexDirection:'column',width:'100%'}} component={'section'}>
       <Stack py={3} direction='column' gap={1} sx={{alignItems:'center'}}>
-      <Typography variant='h6' sx={{fontFamily:'Crimson Pro'}} color='textSecondary' >{bookTitle}</Typography>
-      <Typography variant='h1' component={'p'} fontWeight={800} sx={{fontFamily:'"Crimson Pro"'}}>{chapterNumber}</Typography>
+      <Typography variant='h6' sx={{...crimsonPro.style,fontWeight:400}} color='textSecondary' >{bookTitle}</Typography>
+      <Typography variant='h1' component={'p'} fontWeight={800} sx={{...crimsonPro.style,fontWeight:400}}>{chapterNumber}</Typography>
       </Stack>
     {
       isLoading && !data && <Stack direction='column' sx={{height:'100vh',width:'100%',display:'flex',alignItems:'center',gap:3}} >

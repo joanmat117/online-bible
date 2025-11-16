@@ -1,10 +1,11 @@
 import { removeVerseCommentaryFromDB, updateVerseCommentaryFromDB } from '@/shared/services/verseCommentariesApi'
 import { X } from 'lucide-react'
 import { Fade, IconButton, Stack, TextField } from '@mui/material'
-import {Box,Typography,Icon} from '@mui/material'
+import {Box,Typography} from '@mui/material'
 import { useColor } from '@/shared/hooks/useColor'
 import { ChangeEvent } from 'react'
 import { SolarPen2Linear } from '@/shared/ui/Icons'
+import { crimsonPro } from '@/shared/styles/fonts'
 
 interface Props {
   verse: {
@@ -53,7 +54,7 @@ export function VerseCommentaryCard({verse}:Props){
             <X/>
           </IconButton>
         </Stack>
-              <Typography p={1.3} color='textSecondary' sx={{display:'inline',backgroundColor:'background.default',lineHeight:1.3,fontSize:17,fontFamily:'"Crimson Pro"'}} variant='body1' fontWeight={ 400}>
+              <Typography p={1.3} color='textSecondary' sx={{display:'inline',backgroundColor:'background.default',lineHeight:1.3,fontSize:17,...crimsonPro.style}} variant='body1' fontWeight={ 400}>
               {verse.content}
               </Typography>
               <Box sx={{display:'flex',justifyContent:'space-between',alignItems:'center'}}>

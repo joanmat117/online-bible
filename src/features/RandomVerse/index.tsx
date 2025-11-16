@@ -4,6 +4,7 @@ import { useBibleStore } from "@/shared/contexts/useBibleStore";
 import { Typography,Stack,IconButton} from "@mui/material";
 import { SolarCheckCircleLinear, SolarCloseCircleLinear, SolarCopyLinear, SolarRefreshCircleLinear, SolarRoundAltArrowRightBroken } from "@/shared/ui/Icons";
 import Link from 'next/link'
+import { crimsonPro } from "@/shared/styles/fonts";
 
 export function RandomVerse(){
   const {copyState,verseRoute,copyToClipboard,reloadRandomVerse,randomVerse} = useRandomVerse()
@@ -21,7 +22,7 @@ export function RandomVerse(){
     backgroundColor:'primary.main',
   }}>
   <Stack direction={'row'} sx={{justifyContent:'space-between',alignItems:'center'}}>
-    <Typography sx={{fontFamily:'"Lato"',fontWeight:600,opacity:0.8}} color="primary.contrastText" variant='body1'>{verseRoute}</Typography>
+    <Typography sx={{fontWeight:600,opacity:0.8}} color="primary.contrastText" variant='body1'>{verseRoute}</Typography>
       <Link href='/read'>
         <IconButton sx={{color:'primary.contrastText'}} onClick={()=>{
           changeChapter({bookId:randomVerse.bookId,chapter:randomVerse.chapter})
@@ -30,7 +31,7 @@ export function RandomVerse(){
         </IconButton>
       </Link>
   </Stack>
-  <Typography variant="body1" sx={{fontFamily:'"Crimson Pro"',fontSize:20}}>
+  <Typography variant="body1" sx={{...crimsonPro.style,fontSize:20}}>
     {randomVerse.text}
   </Typography>
   <Stack direction='row' sx={{justifyContent:'space-between'}}>

@@ -2,6 +2,7 @@ import { X } from 'lucide-react'
 import { removeSavedVerseFromDB} from '@/shared/services/savedVersesApi'
 import { IconButton, Stack,Box,Typography } from '@mui/material'
 import { useColor } from '@/shared/hooks/useColor'
+import { crimsonPro } from '@/shared/styles/fonts'
 
 interface Props {
   verse:{
@@ -42,7 +43,7 @@ export function SavedVerseCard({verse}:Props){
             <X/>
           </IconButton>
         </Stack>
-              <Typography p={1.4} sx={{display:'inline',lineHeight:1.4,fontSize:20,fontFamily:'"Crimson Pro"'}} variant='body1' fontWeight={ 400}>
+              <Typography p={1.4} sx={{display:'inline',lineHeight:1.4,fontSize:20,fontFamily:crimsonPro.style.fontFamily}} variant='body1' fontWeight={ 400}>
               {verse.content}
               </Typography>
         </Box>
