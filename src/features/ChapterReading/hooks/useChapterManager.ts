@@ -6,7 +6,7 @@ import { useStoredChapter } from "@/shared/hooks/useStoredChapter";
 
 export function useChapterManager(){
   const isMounting = useRef(true)
-  const {storedChapter,setStoredChapter} = useStoredChapter() 
+  const {setStoredChapter,fetchStoredChapter} = useStoredChapter() 
   const searchParams = useSearchParams()
   const changeChapter = useBibleStore(state=>state.changeChapter)
   const currentChapter = useBibleStore(state=>state.currentChapter)
@@ -32,18 +32,22 @@ export function useChapterManager(){
   }
 
   useEffect(()=>{
+    const storedChapter = fetchStoredChapter()
       if(chapterFromParams){
         changeChapter(chapterFromParams)
       } else if(storedChapter) {
-        changeChapter(storedChapter)
+        changeChapter({
+          bookId:storedChapter.bookId,
+          chapter:storedChapter.chapter
+        })
       }
   },[])
   useEffect(()=>{
+    updateUrlToCurrentChapter()
     if(isMounting.current){
       isMounting.current = false
       return
     }
-    updateUrlToCurrentChapter()
     persistCurrentChapter()
   },[currentChapter])
     

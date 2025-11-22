@@ -5,11 +5,15 @@ import { CurrentChapter } from "@/shared/contexts/useBibleStore";
 export function useStoredChapter() {
   const [storedChapter, setStoredChapter] = useState<CurrentChapter | null>(null);
 
-  useEffect(() => {
+  const fetchStoredChapter = ()=>{
     const stored = localStorage.getItem('currentChapter');
     if (stored) {
-      setStoredChapter(JSON.parse(stored));
+      return JSON.parse(stored) as (CurrentChapter | null)
     }
+  }
+
+  useEffect(() => {
+      setStoredChapter(fetchStoredChapter() || null) 
   }, []);
 
   const changeStoredChapter = (chapter: CurrentChapter) => {
@@ -17,5 +21,5 @@ export function useStoredChapter() {
     setStoredChapter(chapter);
   }
 
-  return { storedChapter, setStoredChapter: changeStoredChapter }
+  return { storedChapter, setStoredChapter: changeStoredChapter,fetchStoredChapter }
 }
