@@ -33,7 +33,7 @@ export const ChapterReading = () => {
     <Box sx={{p:1,mb:3,flex:1,display:'flex',flexDirection:'column',width:'100%'}} component={'section'}>
       <Stack py={3} direction='column' gap={1} sx={{alignItems:'center'}}>
       <Typography variant='h6' sx={{...crimsonPro.style,fontWeight:400}} color='textSecondary' >{bookTitle}</Typography>
-      <Typography variant='h1' component={'p'} fontWeight={800} sx={{...crimsonPro.style,fontWeight:400}}>{chapterNumber}</Typography>
+      <Typography variant='h1' component={'p'} sx={{...crimsonPro.style,fontWeight:700}}>{chapterNumber}</Typography>
       </Stack>
     {
       isLoading && !data && <Stack direction='column' sx={{height:'100vh',width:'100%',display:'flex',alignItems:'center',gap:3}} >
