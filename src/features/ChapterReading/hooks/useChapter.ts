@@ -1,15 +1,14 @@
 "use client"
 
 import { BibleChapterResponse } from "@/shared/types/BibleChapterResponse"
-import { useBibleStore } from "@/shared/contexts/useBibleStore"
+import { useBibleStore } from "@/shared/hooks/useBibleStore"
 import { useEffect,useState } from "react"
 
 export function useChapter(){
   const [data,setData] = useState<BibleChapterResponse|null>(null)
   const [isLoading,setIsLoading] = useState<boolean>(false)
   const [error,setError] = useState<Error|null>(null)
-  const fetchCurrentChapter = useBibleStore(state=>state.fetchCurrentChapter)
-  const currentChapter = useBibleStore(state=>state.currentChapter)
+  const {fetchCurrentChapter,currentChapter} = useBibleStore()
 
   const fetchChapter = async(fetchOptions?:RequestInit)=>{
       try{

@@ -1,14 +1,14 @@
 "use client"
 import { useState, useEffect } from "react";
-import { CurrentChapter } from "@/shared/contexts/useBibleStore";
+import { CurrentChapterStore } from "@/shared/types/CurrentChapterStore";
 
 export function useStoredChapter() {
-  const [storedChapter, setStoredChapter] = useState<CurrentChapter | null>(null);
+  const [storedChapter, setStoredChapter] = useState<CurrentChapterStore | null>(null);
 
   const fetchStoredChapter = ()=>{
     const stored = localStorage.getItem('currentChapter');
     if (stored) {
-      return JSON.parse(stored) as (CurrentChapter | null)
+      return JSON.parse(stored) as (CurrentChapterStore | null)
     }
   }
 
@@ -16,7 +16,7 @@ export function useStoredChapter() {
       setStoredChapter(fetchStoredChapter() || null) 
   }, []);
 
-  const changeStoredChapter = (chapter: CurrentChapter) => {
+  const changeStoredChapter = (chapter: CurrentChapterStore) => {
     localStorage.setItem('currentChapter', JSON.stringify(chapter));
     setStoredChapter(chapter);
   }

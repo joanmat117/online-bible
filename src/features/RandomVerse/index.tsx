@@ -1,6 +1,6 @@
 "use client"
 import { useRandomVerse } from "./hooks/useRandomVerse";
-import { useBibleStore } from "@/shared/contexts/useBibleStore";
+import { useBibleStore } from "@/shared/hooks/useBibleStore";
 import { Typography,Stack,IconButton} from "@mui/material";
 import { SolarCheckCircleLinear, SolarCloseCircleLinear, SolarCopyLinear, SolarRefreshCircleLinear, SolarRoundAltArrowRightBroken } from "@/shared/ui/Icons";
 import Link from 'next/link'
@@ -8,7 +8,7 @@ import { crimsonPro } from "@/shared/styles/fonts";
 
 export function RandomVerse(){
   const {copyState,verseRoute,copyToClipboard,reloadRandomVerse,randomVerse} = useRandomVerse()
-  const changeChapter = useBibleStore(store=>store.changeChapter)
+  const {changeChapter} = useBibleStore()
 
   if(!randomVerse) return
 

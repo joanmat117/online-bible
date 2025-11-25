@@ -14,13 +14,14 @@
     "@emotion/styled": "^11.14.1",
     "@mui/material": "^7.2.0",
     "@mui/material-nextjs": "^7.3.3",
+    "@reduxjs/toolkit": "^2.11.0",
     "dexie": "^4.2.1",
     "dexie-react-hooks": "^1.1.7",
     "lucide-react": "^0.525.0",
     "next": "15.4.4",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "zustand": "^5.0.8"
+    "react-redux": "^9.2.0"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

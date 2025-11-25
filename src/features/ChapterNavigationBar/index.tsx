@@ -1,14 +1,13 @@
 "use client"
 import { usePathname } from 'next/navigation'
-import { useBibleStore } from '@/shared/contexts/useBibleStore'
+import { useBibleStore } from '@/shared/hooks/useBibleStore'
 import {Button, Stack} from '@mui/material'
 import { ChapterSelector } from './components/ChapterSelector'
 import { SolarAltArrowLeftBold, SolarAltArrowRightBold } from '@/shared/ui/Icons'
 
 export function ChapterNavigationBar(){
   const pathname = usePathname()
-  const changeToNextChapter = useBibleStore(state=>state.changeToNextChapter)
-  const changeToPrevChapter = useBibleStore(state=>state.changeToPrevChapter)
+  const {changeToPrevChapter,changeToNextChapter} = useBibleStore()
   if(pathname !== '/read') return 
 
     return <>

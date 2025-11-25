@@ -1,7 +1,7 @@
 "use client"
 
 import { useStoredChapter } from "@/shared/hooks/useStoredChapter"
-import { SolarAltArrowRightBold, SolarDoubleAltArrowRightBold } from "@/shared/ui/Icons"
+import { SolarDoubleAltArrowRightBold } from "@/shared/ui/Icons"
 import { Paper,Box,Typography,Button } from "@mui/material"
 import Link from 'next/link'
 

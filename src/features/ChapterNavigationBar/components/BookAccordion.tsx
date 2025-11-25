@@ -1,4 +1,4 @@
-import { useBibleStore } from "@/shared/contexts/useBibleStore";
+import { useBibleStore } from "@/shared/hooks/useBibleStore";
 import { Accordion,AccordionDetails,AccordionSummary,Typography,Button,Box } from "@mui/material";
 import { RefObject, useRef } from "react";
 
@@ -12,7 +12,7 @@ interface Props {
 }
 
 export function BookAccordion({book,menuRef}:Props){
-  const changeChapter = useBibleStore(store=>store.changeChapter)
+  const {changeChapter} = useBibleStore()
   const accordionRef = useRef<HTMLDivElement|null>(null)
   
   const onAccordionOpen = (e:HTMLElement|any)=>{

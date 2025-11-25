@@ -1,4 +1,4 @@
-import { useBibleStore } from "@/shared/contexts/useBibleStore"
+import { useBibleStore } from "@/shared/hooks/useBibleStore"
 import { Button,Fade,Box, Stack, IconButton } from "@mui/material"
 import { useState, useMemo, useRef} from "react"
 import books from '@/shared/data/books.json'
@@ -8,7 +8,7 @@ import { BookAccordion } from "./BookAccordion"
 
 export function ChapterSelector(){
   const [isOpen,setIsOpen] = useState(false)
-  const currentChapter = useBibleStore(state=>state.currentChapter)
+  const {currentChapter} = useBibleStore()
   const menuRef = useRef<HTMLDivElement>(null)
   
      const BooksList = useMemo(()=>{

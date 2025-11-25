@@ -1,4 +1,4 @@
-import { useBibleStore } from "@/shared/contexts/useBibleStore";
+import { useBibleStore } from "@/shared/hooks/useBibleStore";
 import {useEffect, useMemo, useRef} from 'react'
 import { getBookByQuery } from "@/shared/utils/booksUtilities";
 import { useSearchParams} from "next/navigation"
@@ -8,8 +8,7 @@ export function useChapterManager(){
   const isMounting = useRef(true)
   const {setStoredChapter,fetchStoredChapter} = useStoredChapter() 
   const searchParams = useSearchParams()
-  const changeChapter = useBibleStore(state=>state.changeChapter)
-  const currentChapter = useBibleStore(state=>state.currentChapter)
+  const {currentChapter,changeChapter} = useBibleStore()
 
   const chapterFromParams = useMemo(()=>{
     const chapterParam = Number(searchParams.get('chapter'))
