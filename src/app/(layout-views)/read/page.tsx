@@ -7,9 +7,10 @@ type Props = {
 }
 
 export async function generateMetadata({ searchParams }: Props): Promise<Metadata> {
-  const { bookParam, chapterParam } = await searchParams
-  const book: string = bookParam?.toString() || ''
-  const chapter: string = chapterParam?.toString() || ''
+  const params = await searchParams
+  // ✅ CORRECCIÓN: Usa los nombres exactos de los query params
+  const book = params.book?.toString() || ''
+  const chapter = params.chapter?.toString() || ''
 
   const hasBookAndChapter = book && chapter
   
@@ -92,11 +93,11 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
     metadataBase: new URL('https://online-bible.vercel.app'),
   }
 }
+
 export default function Read(){
- 
-  return <>
-  <Suspense fallback={''}>
-  <ChapterReading/>
-  </Suspense>
-	</>
+  return (
+    <Suspense fallback={''}>
+      <ChapterReading/>
+    </Suspense>
+  )
 }
