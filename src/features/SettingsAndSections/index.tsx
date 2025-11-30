@@ -19,7 +19,8 @@ export function SettingsAndSections(){
       toggleTheme()
     }}
     sx={{
-      backgroundColor:mode == 'dark'? 'primary.main':undefined,
+      backgroundColor:mode === 'dark'? 'primary.main':undefined,
+      color:mode === 'dark'?'background.paper':undefined
     }}
     >
     </SettingAndSectionButton>

@@ -8,14 +8,14 @@ export default function Home() {
     paddingY:3,
     paddingX:1
   }}>
-    <Typography color={'primary'} variant="h1" component={'h1'} textAlign={'center'} sx={{
+    <Typography color={'secondary'} variant="h1" component={'h1'} textAlign={'center'} sx={{
       ...funnelDisplay.style,  
       fontWeight:800,
       py:4,
       fontSize: {
         xs: 50,
         md: 80
-      }
+      },
     }}>
       Biblia Online
     </Typography>

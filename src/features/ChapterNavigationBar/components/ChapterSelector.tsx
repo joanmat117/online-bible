@@ -46,7 +46,11 @@ export function ChapterSelector(){
    
 
   return <>
-  <Button onClick={()=>setIsOpen(true)} sx={{textTransform:'capitalize',borderRadius:'8px'}} variant='contained' disableElevation>
+  <Button onClick={()=>setIsOpen(true)} sx={{
+    textTransform:'capitalize',
+    fontWeight:'900',
+    borderRadius:'8px'
+  }} variant='contained' disableElevation>
       {currentChapter.bookTitle + ' ' + currentChapter.chapter}
   </Button>
   <Fade in={isOpen} timeout={300}>

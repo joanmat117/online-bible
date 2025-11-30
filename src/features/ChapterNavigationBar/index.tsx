@@ -13,7 +13,7 @@ export function ChapterNavigationBar(){
     return <>
     <Stack direction={'row'} gap={2} sx={{
       width:'100vw',
-      bgcolor:'background.paper',
+      bgcolor:'#10101a',
       justifyContent:'center',
       p:1
     }}>

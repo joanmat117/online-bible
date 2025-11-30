@@ -100,6 +100,7 @@ export function VerseDialog({selectedVerse,bookId,bookTitle,chapterNumber,setSel
          <TextField
             variant='outlined'
             placeholder='Tu commentario'
+            color='secondary'
             multiline
             onChange={onEditComment}
             label='Comentario'
@@ -116,7 +117,7 @@ export function VerseDialog({selectedVerse,bookId,bookTitle,chapterNumber,setSel
 }
 
 function DialogButton({children,onClick}:{children?:ReactNode,onClick?:()=>void}){
-  return <Button variant='outlined'  onClick={onClick} sx={{
+  return <Button variant='outlined' color='secondary' onClick={onClick} sx={{
       flex:1,
       minWidth:'100px',
       borderRadius:'10px'
