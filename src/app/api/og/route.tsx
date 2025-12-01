@@ -19,14 +19,15 @@ export async function GET(request: NextRequest) {
           height: '100%',
           display: 'flex',
           color:'#FECF0F',
-          gap:'10px',
+          gap:'4px',
+          fontWeight:'900',
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
         }}
       >
         <h1>{chapter}</h1>
-        <p style={{ fontSize: 24 }}>{book}</p>
+        <p style={{ fontSize: 40,fontWeight:500 }}>{book}</p>
       </div>
     ),
     {
