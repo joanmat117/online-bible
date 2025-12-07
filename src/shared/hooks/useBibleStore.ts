@@ -1,16 +1,21 @@
 import { useSelector,useDispatch } from "react-redux"
 import { StoreDispatch, StoreState } from "@/shared/contexts/store"
-import { changeChapter, changeToNextChapter, changeToPrevChapter } from "@/shared/contexts/storeSlices/bibleSlice"
+import { changeChapter as changeCh, changeToNextChapter, changeToPrevChapter,changeTranslation as changeTr} from "@/shared/contexts/storeSlices/bibleSlice"
 import { fetchBibleChapter } from "@/shared/services/bibleApi"
 import { BibleChapterResponse } from "@/shared/types/BibleChapterResponse"
+import { CurrentChapterStore, CurrentChapterWithoutTitle } from "../types/CurrentChapterStore"
 
 
 export function useBibleStore(){
   const {currentChapter} = useSelector((state:StoreState)=>state.bible) 
   const dispatch:StoreDispatch = useDispatch()
 
-  const change = (chapter:{bookId:string,chapter:number})=>{
-    dispatch(changeChapter(chapter))
+  const changeChapter = (chapter:CurrentChapterWithoutTitle)=>{
+    dispatch(changeCh(chapter))
+  }
+
+  const changeTranslation = (translation:CurrentChapterStore['translation'])=>{
+    dispatch(changeTr(translation))
   }
 
   const nextChapter = ()=>{
@@ -28,9 +33,10 @@ export function useBibleStore(){
 
   return {
     currentChapter,
-    changeChapter:change,
+    changeChapter,
     changeToNextChapter:nextChapter,
     changeToPrevChapter:prevChapter,
-    fetchCurrentChapter
+    fetchCurrentChapter,
+    changeTranslation
   }
 }

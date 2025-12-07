@@ -2,11 +2,13 @@
 import { useState, useEffect } from "react";
 import { CurrentChapterStore } from "@/shared/types/CurrentChapterStore";
 
+const storedChapterName = 'CHV2'
+
 export function useStoredChapter() {
   const [storedChapter, setStoredChapter] = useState<CurrentChapterStore | null>(null);
 
   const fetchStoredChapter = ()=>{
-    const stored = localStorage.getItem('currentChapter');
+    const stored = localStorage.getItem(storedChapterName);
     if (stored) {
       return JSON.parse(stored) as (CurrentChapterStore | null)
     }
@@ -17,7 +19,7 @@ export function useStoredChapter() {
   }, []);
 
   const changeStoredChapter = (chapter: CurrentChapterStore) => {
-    localStorage.setItem('currentChapter', JSON.stringify(chapter));
+    localStorage.setItem(storedChapterName, JSON.stringify(chapter));
     setStoredChapter(chapter);
   }
 

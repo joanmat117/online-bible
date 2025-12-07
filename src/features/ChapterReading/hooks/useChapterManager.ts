@@ -3,6 +3,7 @@ import {useEffect, useMemo, useRef} from 'react'
 import { getBookByQuery } from "@/shared/utils/booksUtilities";
 import { useSearchParams} from "next/navigation"
 import { useStoredChapter } from "@/shared/hooks/useStoredChapter";
+import { CurrentChapterWithoutTitle } from "@/shared/types/CurrentChapterStore";
 
 export function useChapterManager(){
   const isMounting = useRef(true)
@@ -19,7 +20,7 @@ export function useChapterManager(){
     return {
       chapter:chapterParam,
       bookId:book?.id,
-    }
+    } as CurrentChapterWithoutTitle 
   },[])
 
   const updateUrlToCurrentChapter = ()=>{
@@ -38,7 +39,7 @@ export function useChapterManager(){
         changeChapter({
           bookId:storedChapter.bookId,
           chapter:storedChapter.chapter
-        })
+        } as CurrentChapterWithoutTitle)
       }
   },[])
   useEffect(()=>{
@@ -48,6 +49,6 @@ export function useChapterManager(){
       return
     }
     persistCurrentChapter()
-  },[currentChapter])
+  },[currentChapter.chapter,currentChapter.bookId])
     
 }

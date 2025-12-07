@@ -1,14 +1,16 @@
 import { BibleChapterResponse } from "@/shared/types/BibleChapterResponse";
 
+type BibleTranslations = 'spa_bes'|'spa_onbv'|'spa_pdt'|'spa_r09'|'spa_rvg'|'spa_v2p'|'spa_vbl'
+
 interface Params {
   bookId:string,
   chapter:number,
-  fetchOptions?:RequestInit
+  fetchOptions?:RequestInit,
+  translation?:BibleTranslations
 }
 
-export async function fetchBibleChapter({bookId = 'GEN',chapter = 1,fetchOptions={}}:Params):
+export async function fetchBibleChapter({bookId = 'GEN',chapter = 1,fetchOptions={},translation = 'spa_r09'}:Params):
 Promise<BibleChapterResponse>{
-  const translation = 'spa_r09';//onbv,r09,v2p,vbl
 
   const res = await fetch(`https://bible.helloao.org/api/${translation}/${bookId}/${chapter}.json`,fetchOptions)
 
