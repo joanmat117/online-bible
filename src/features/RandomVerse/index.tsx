@@ -4,6 +4,7 @@ import { useBibleStore } from "@/shared/hooks/useBibleStore";
 import { Typography,Stack,IconButton} from "@mui/material";
 import { SolarCheckCircleLinear, SolarCloseCircleLinear, SolarCopyLinear, SolarRefreshCircleLinear, SolarRoundAltArrowRightBroken } from "@/shared/ui/Icons";
 import Link from 'next/link'
+import { CurrentChapterWithoutTitle } from "@/shared/types/CurrentChapterStore"
 import { crimsonPro } from "@/shared/styles/fonts";
 
 export function RandomVerse(){
@@ -25,7 +26,7 @@ export function RandomVerse(){
     <Typography sx={{fontWeight:600,opacity:0.8}} color="primary.contrastText" variant='body1'>{verseRoute}</Typography>
       <Link href='/read'>
         <IconButton sx={{color:'primary.contrastText'}} onClick={()=>{
-          changeChapter({bookId:randomVerse.bookId,chapter:randomVerse.chapter})
+          changeChapter({bookId:randomVerse.bookId,chapter:randomVerse.chapter} as CurrentChapterWithoutTitle)
         }}>
           <SolarRoundAltArrowRightBroken/>
         </IconButton>
