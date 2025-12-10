@@ -7,6 +7,6 @@ export type CurrentChapterStore = {
     translation:BibleTranslationId
 }
 
-export interface CurrentChapterWithoutTitle extends Omit<CurrentChapterStore,'bookTitle'>{
-    translation?:BibleTranslationId
+export type CurrentChapterWithoutTitle = Omit<CurrentChapterStore, 'bookTitle'> & {
+  translation?: BibleTranslationId
 }
