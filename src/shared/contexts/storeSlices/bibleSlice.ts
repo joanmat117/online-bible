@@ -16,6 +16,7 @@ const bibleSlice = createSlice({
   initialState,
   reducers:{
     changeChapter:(state,action:PayloadAction<CurrentChapterWithoutTitle>)=>{
+      const prev = state.currentChapter
       const {bookId,chapter,translation} = action.payload 
       const book = getBookById(bookId)
       
@@ -26,7 +27,7 @@ const bibleSlice = createSlice({
           bookId,
           chapter,
           bookTitle:book.title,
-          translation
+          translation:translation || prev.translation 
         }
     },
     changeTranslation:(state,action:PayloadAction<CurrentChapterStore['translation']>)=>{

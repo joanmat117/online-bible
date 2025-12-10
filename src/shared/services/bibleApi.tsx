@@ -6,10 +6,10 @@ interface Params {
   bookId:string,
   chapter:number,
   fetchOptions?:RequestInit,
-  translation?:BibleTranslations
+  translation:BibleTranslations
 }
 
-export async function fetchBibleChapter({bookId = 'GEN',chapter = 1,fetchOptions={},translation = 'spa_r09'}:Params):
+export async function fetchBibleChapter({bookId = 'GEN',chapter = 1,fetchOptions={},translation}:Params):
 Promise<BibleChapterResponse>{
 
   const res = await fetch(`https://bible.helloao.org/api/${translation}/${bookId}/${chapter}.json`,fetchOptions)

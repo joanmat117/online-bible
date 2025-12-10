@@ -3,6 +3,7 @@ import {Box} from '@mui/material'
 import { SolarChatLineBold, SolarChatLineLinear, SolarMoonBold, SolarNotebookBookmarkBold } from '@/shared/ui/Icons'
 import {useMuiTheme} from '@/shared/contexts/MuiThemeContext'
 import { SettingAndSectionButton} from './components/SettingAndSectionButton'
+import { TranslationsModal } from './components/TranslationsModal'
 
 export function SettingsAndSections(){
   const {toggleTheme,mode} = useMuiTheme()
@@ -34,6 +35,7 @@ export function SettingsAndSections(){
     label='Comentarios'
     icon={<SolarChatLineBold/>}
     />
+    <TranslationsModal/>
     
 
   </Box>

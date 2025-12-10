@@ -1,6 +1,9 @@
 import React from 'react';
 import type { SVGProps } from 'react';
 
+export function FluentLocalLanguage16Filled(props: SVGProps<SVGSVGElement>) {
+	return (<svg xmlns="http://www.w3.org/2000/svg" width={96} height={96} viewBox="0 0 16 16" {...props}><path fill="currentColor" d="M7.75 2a.75.75 0 0 0 0 1.5H9.5v.751c0 .385-.097.679-.227.855c-.111.151-.263.247-.515.247a.75.75 0 0 0 0 1.5a2.08 2.08 0 0 0 1.724-.859c.367-.5.518-1.132.518-1.743V2.75a.75.75 0 0 0-.75-.75zM6.698 4.725a.75.75 0 0 0-1.396 0l-3.254 8.25a.75.75 0 1 0 1.395.55l.799-2.024h3.513l.797 2.024a.75.75 0 0 0 1.396-.55zm.466 5.276h-2.33L6 7.045zM12.75 2a.75.75 0 0 1 .75.75v2.248h.25a.75.75 0 0 1 0 1.5h-.25v3.751a.75.75 0 0 1-1.5 0V2.75a.75.75 0 0 1 .75-.75"></path></svg>);
+}
 export function SolarDoubleAltArrowRightBold(props: SVGProps<SVGSVGElement>) {
 	return (<svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24" {...props}><path fill="currentColor" fillRule="evenodd" d="M10.512 4.43a.75.75 0 0 0-.081 1.058L16.012 12l-5.581 6.512a.75.75 0 1 0 1.138.976l6-7a.75.75 0 0 0 0-.976l-6-7a.75.75 0 0 0-1.057-.081" clipRule="evenodd"></path><path fill="currentColor" d="M6.25 5a.75.75 0 0 1 1.32-.488l6 7a.75.75 0 0 1 0 .976l-6 7A.75.75 0 0 1 6.25 19z"></path></svg>);
 }

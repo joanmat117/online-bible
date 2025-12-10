@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link'
 import { SolarHomeAngleBold, SolarNotebookMinimalisticBold, SolarSettingsMinimalisticBold } from '@/shared/ui/Icons';
+import { useBibleStore } from '@/shared/hooks/useBibleStore';
 
 const navigationItems = [
     {
@@ -33,7 +34,8 @@ const navigationItems = [
 export default function NavigationBar() {
   const [value, setValue] = useState('');
   const pathname = usePathname();
-  
+  const {currentChapter} = useBibleStore()
+ console.log('==Transaltion===',currentChapter.translation) 
   useEffect(() => {
     const firstPath = pathname.split('/')[1];
     setValue(firstPath);

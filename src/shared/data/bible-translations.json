@@ -1,37 +1,37 @@
 [
   {
-    id: "spa_bes",
-    name: "La Biblia en Español Sincillo",
-    language: "spa"
+    "id": "spa_bes",
+    "name": "La Biblia en Español Sincillo",
+    "language": "spa"
   },
   {
-    id: "spa_onbv",
-    name: "Biblica® Open Nueva Biblia Viva 2008",
-    language: "spa"
+    "id": "spa_onbv",
+    "name": "Biblica® Open Nueva Biblia Viva 2008",
+    "language": "spa"
   },
   {
-    id: "spa_pdt",
-    name: "Palabra de Dios para ti",
-    language: "spa"
+    "id": "spa_pdt",
+    "name": "Palabra de Dios para ti",
+    "language": "spa"
   },
   {
-    id: "spa_r09",
-    name: "Santa Biblia — Reina Valera 1909",
-    language: "spa"
+    "id": "spa_r09",
+    "name": "Santa Biblia — Reina Valera 1909",
+    "language": "spa"
   },
   {
-    id: "spa_rvg",
-    name: "Santa Biblia Reina Valera Gómez",
-    language: "spa"
+    "id": "spa_rvg",
+    "name": "Santa Biblia Reina Valera Gómez",
+    "language": "spa"
   },
   {
-    id: "spa_v2p",
-    name: "Santa Biblia Valera 1602 Purificada",
-    language: "spa"
+    "id": "spa_v2p",
+    "name": "Santa Biblia Valera 1602 Purificada",
+    "language": "spa"
   },
   {
-    id: "spa_vbl",
-    name: "Versión Biblia Libre",
-    language: "spa"
+    "id": "spa_vbl",
+    "name": "Versión Biblia Libre",
+    "language": "spa"
   }
 ]

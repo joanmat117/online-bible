@@ -25,8 +25,8 @@ export function useBibleStore(){
     dispatch(changeToPrevChapter())
   }
   const fetchCurrentChapter = async (fetchOptions?:RequestInit):Promise<BibleChapterResponse>=>{
-    const {chapter,bookId} = currentChapter
-    const data = await fetchBibleChapter({chapter,bookId,fetchOptions})
+    const {chapter,bookId,translation} = currentChapter
+    const data = await fetchBibleChapter({chapter,bookId,fetchOptions,translation})
 
     return data
   }
