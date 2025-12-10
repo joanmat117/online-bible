@@ -1,6 +1,7 @@
 import { useBibleStore } from "@/shared/hooks/useBibleStore";
 import { Accordion,AccordionDetails,AccordionSummary,Typography,Button,Box } from "@mui/material";
 import { RefObject, useRef } from "react";
+import { CurrentChapterWithoutTitle } from "@/shared/types/CurrentChapterStore"
 
 interface Props {
   book:{
@@ -43,7 +44,7 @@ export function BookAccordion({book,menuRef}:Props){
               <AccordionDetails > 
               <Box sx={{display:'flex',flexWrap:'wrap',gap:1}}>
                 {Array.from({length:book.numberOfChapters},(_,i)=>(
-                  <Button onClick={()=>changeChapter({bookId:book.id,chapter:i+1})} key={i} color="inherit" size='medium' variant='text' sx={{
+                  <Button onClick={()=>changeChapter({bookId:book.id,chapter:i+1} as CurrentChapterWithoutTitle)} key={i} color="inherit" size='medium' variant='text' sx={{
                     flex:1,
                     fontWeight:700,
                     paddingY:1,
