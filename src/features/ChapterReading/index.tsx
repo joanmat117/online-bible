@@ -54,7 +54,7 @@ export const ChapterReading = () => {
       </Box>
     }
     <Fade in={Boolean(data && verses != undefined && !error && !isLoading)}> 
-      <Stack gap={0.5} direction='column' px={1}>
+      <Stack gap={0.5} direction='column' px={0.2}>
         {verses?.map((verse,index) => <ChapterReadingVerseCard key={index} setSelectedVerse={setSelectedVerse} verse={verse} />)}
       </Stack>
       

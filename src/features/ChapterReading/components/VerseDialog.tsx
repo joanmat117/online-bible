@@ -65,9 +65,13 @@ export function VerseDialog({selectedVerse,bookId,bookTitle,chapterNumber,setSel
     }
   }
 
-  return <Dialog open={Boolean(selectedVerse)} onClose={()=>setSelectedVerse(null)} >
+  return <Dialog PaperProps={{
+    sx:{
+      borderRadius:'20px',
+    }
+  }} open={Boolean(selectedVerse)} onClose={()=>setSelectedVerse(null)} >
       <DialogContent sx={{
-        backgroundColor:'background.paper'
+        backgroundColor:'background.paper',
       }} >
         {selectedVerse !== null && <>
         <Typography fontWeight={700} textAlign={'center'} variant='body1' sx={{...lato.style}}>

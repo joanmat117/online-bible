@@ -34,6 +34,7 @@ export function ContinueReadingCard(){
       <Button variant="contained" sx={{
         borderRadius:'100%',
         aspectRatio:'1/1',
+        boxShadow:'none'
       }}>
         <SolarDoubleAltArrowRightBold width={34} height={34} />
       </Button>

@@ -22,7 +22,7 @@ export function ChapterReadingVerseCard({verse,setSelectedVerse}:Props){
               p:1
             }} onClick={()=>verse.number && setSelectedVerse(verse)}
             >
-            <Typography sx={{display:'inline',whiteSpace:'pre-wrap',lineHeight:1.4,fontSize:20,...crimsonPro.style}} variant='body1' fontWeight={verse.type == 'heading'? 700 : 400}>
+            <Typography sx={{display:'inline',whiteSpace:'pre-wrap',lineHeight:1.4,fontSize:20,...crimsonPro.style}} variant='body1' fontWeight={verse.type == 'heading'? 700 : 500}>
             {verse.number && 
               <Typography sx={{
                 backgroundColor:color.background,

@@ -53,18 +53,22 @@ export function TranslationsModal(){
         {translations.map((translation)=>{
           const selected = currentChapter.translation == translation.id
           return <ListItem disablePadding key={translation.id} onClick={()=>changeTranslation(translation.id as Translation['id'])} sx={{
-            backgroundColor: selected? 'primary.main' :undefined
+            backgroundColor: selected? 'primary.main' :undefined,
+            transition:'0.5s'
           }}>
           <ListItemButton>  
           <ListItemText
           sx={{
             color:selected?'#000':undefined,
+            transition:'0.5s'
           }}
   
           slotProps={{
             primary: {
               sx:{
-                fontWeight:selected?'bold':undefined
+                fontWeight:selected?'bold':undefined,
+                letterSpacing:selected?0.8:undefined,
+                transition:'0.5s'
               }
             },
             secondary: {

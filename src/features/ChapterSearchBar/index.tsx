@@ -45,7 +45,7 @@ export function ChapterSearchBar(){
     borderRadius:'100px',
     display:'flex',
     width:'100%',
-    borderColor:(t)=>t.palette.primary.main,
+    borderColor:(t)=>t.palette.secondary.main,
     alignItems:'center',
     maxWidth:{xs:'300px',sm:'400px'},
     mx:'auto',
@@ -88,7 +88,7 @@ export function ChapterSearchBar(){
       />
     )}
     />
-    <IconButton onClick={handleButtonPress} sx={{width:40,height:'100%',display:'flex',alignItems:'center',justifyContent:'center',color:'primary.main'}} >
+    <IconButton onClick={handleButtonPress} sx={{width:40,height:'100%',display:'flex',alignItems:'center',justifyContent:'center',color:'secondary.main'}} >
       <Search/>
     </IconButton>
   </Paper>
